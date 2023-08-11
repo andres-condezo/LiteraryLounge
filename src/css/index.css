@@ -1,0 +1,75 @@
+
+:root {
+  --primary-color: #2d1910;
+  --accent-color: #daaa63;
+  --grey-color: #434b54;
+  --white-color: #f8f3ed;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-size: 2rem;
+  height: 100vh;
+  overflow-x: hidden;
+  color: var(--primary-color);
+  background: var(--white-color);
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Roboto',
+    'Oxygen',
+    'Ubuntu',
+    'Cantarell',
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  width: 100%;
+  height: 5rem;
+  padding: 4rem 5%;
+  background-color: var(--accent-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+.btn {
+  all: unset;
+  cursor: pointer;
+}
+
+main {
+  width: 100%;
+  height: calc(100vh - 8rem);
+  padding: 4rem 5%;
+  background-color: var(--white-color);
+}
+
+footer {
+  color: var(--white-color);
+  text-align: center;
+  width: 100%;
+  height: 3rem;
+  padding: 1rem 5%;
+  background-color: black;
+}
