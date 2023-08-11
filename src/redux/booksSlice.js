@@ -9,7 +9,7 @@ const BookSlice = createSlice({
       const newInitialState = [];
       const books = action.payload;
       books.library.forEach((book) => {
-        newInitialState.push({ ...book.book, onReadList: false });
+        newInitialState.push({ ...book.book, onReadList: false, priorityOnReadList: 0 });
       });
       saveState(state);
       return newInitialState;
