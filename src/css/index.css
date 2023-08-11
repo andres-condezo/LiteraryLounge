@@ -1,9 +1,9 @@
 
 :root {
-  --primary-color: #2D1910;
-  --accent-color: #DAAA63;
+  --primary-color: #2d1910;
+  --accent-color: #daaa63;
   --grey-color: #434b54;
-  --white-color: #F8F3ED;
+  --white-color: #f8f3ed;
 }
 
 * {
@@ -14,14 +14,14 @@
 }
 
 html {
-  font-size: 10px; 
+  font-size: 10px;
 }
 
 body {
   font-size: 2rem;
   height: 100vh;
   overflow-x: hidden;
-  color : var(--primary-color);
+  color: var(--primary-color);
   background: var(--white-color);
   font-family:
     -apple-system,
