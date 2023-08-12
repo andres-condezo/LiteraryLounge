@@ -1,6 +1,14 @@
+import BookList from './booksList';
+
 const Main = () => (
   <main>
-    <span>Main</span>
+    <aside className="filters">
+      Fiters
+    </aside>
+    <BookList />
+    <aside className="reading-list">
+      Reading List
+    </aside>
   </main>
 );
 

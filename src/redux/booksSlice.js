@@ -1,15 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { saveState } from '../logic/localStorage';
+import { saveState, loadState } from '../logic/localStorage';
+import books from '../data/books.json';
 
 const BookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
-    getBooks: (state, action) => {
+    getBooks: (state, _action) => {
+      console.log(_action);
       const newInitialState = [];
-      const books = action.payload;
+      const readingList = loadState();
       books.library.forEach((book) => {
-        newInitialState.push({ ...book.book, onReadList: false, priorityOnReadList: 0 });
+        const isOnReadList = readingList.includes(book.book.id);
+        newInitialState.push({ ...book.book, onReadList: isOnReadList });
       });
       saveState(state);
       return newInitialState;
