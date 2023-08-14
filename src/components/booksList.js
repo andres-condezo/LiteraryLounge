@@ -1,19 +1,18 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getBooks } from '../redux/booksSlice';
-import bookObject from '../data/books.json';
+import { PropTypes } from 'prop-types';
 
-const BooksList = () => {
-  const dispatch = useDispatch();
-  const books = useSelector((state) => state.books);
+const BooksList = ({ listaLibros }) => (
+  <div className="book__list">{JSON.stringify(listaLibros)}</div>
+);
 
-  useEffect(() => {
-    dispatch(getBooks(bookObject));
-  }, []);
-
-  return (
-    <div>{JSON.stringify(books)}</div>
-  );
+BooksList.propTypes = {
+  listaLibros: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    cover: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    author: PropTypes.shape({
+      name: PropTypes.string.isRequired,
+    }).isRequired,
+  })).isRequired,
 };
 
 export default BooksList;
