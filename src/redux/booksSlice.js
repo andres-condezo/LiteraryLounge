@@ -1,21 +1,36 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { saveState } from '../logic/localStorage';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { loadState } from '../logic/localStorage';
 
+const ReadingList = loadState();
+
+// Funciones asíncronas como consultas a la API (puede estar en cualquier otro archivo)
+export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () => (
+  fetch('books.json')
+    .then((response) => response.json())
+    .then((data) => data.library)
+    .catch((error) => error)
+));
+
+// Store Slices
 const BookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
-    getBooks: (state, action) => {
-      const newInitialState = [];
-      const books = action.payload;
-      books.library.forEach((book) => {
-        newInitialState.push({ ...book.book, onReadList: false, priorityOnReadList: 0 });
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchAllBooks.fulfilled, (state, action) => {
+        // normalize fetched data
+        const newBookList = [];
+        action.payload.forEach((book) => {
+          const isOnReadList = ReadingList.includes(book.book.id);
+          newBookList.push({ ...book.book, onReadList: isOnReadList });
+        });
+        // Add any fetched books to the array
+        return newBookList;
       });
-      saveState(state);
-      return newInitialState;
-    },
   },
 });
 
-export const { getBooks } = BookSlice.actions;
+// Export the reducer, either as a default or named export
 export default BookSlice.reducer;
