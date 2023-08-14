@@ -7,7 +7,7 @@ const BookSlice = createSlice({
   initialState: [],
   reducers: {
     getBooks: (state, _action) => {
-      console.log(_action);
+      console.log('💬 :booksSlice.js:::10:', _action);
       const newInitialState = [];
       const readingList = loadState();
       books.library.forEach((book) => {
