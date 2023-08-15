@@ -2,16 +2,25 @@ import store from '../redux/store';
 
 // FILTERS
 const getFilteredBooks = (title, genre, pages) => {
-  console.log(pages);
   const { books } = store.getState();
-  if (title === '' && genre === '') return books;
+  console.log('-----PAGES-----------: ', pages);
+  const existRange = pages.length === 2;
+  if (title === '' && genre === '' && !existRange) return books;
 
   const filteredList = books.filter((book) => {
+    if (title !== '' && genre !== '' && existRange) return book.title.toLowerCase().includes(title) && book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1];
+
     if (title !== '' && genre !== '') return book.title.toLowerCase().includes(title) && book.genre === genre;
 
-    if (title === '') return book.genre === genre;
+    if (title !== '' && existRange) return book.title.toLowerCase().includes(title) && book.pages >= pages[0] && book.pages <= pages[1];
 
-    return book.title.toLowerCase().includes(title);
+    if (genre !== '' && existRange) return book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1];
+
+    if (title !== '') return book.title.toLowerCase().includes(title);
+
+    if (genre !== '') return book.genre === genre;
+
+    return book.pages >= pages[0] && book.pages <= pages[1];
   });
   console.log(filteredList);
   return filteredList;
