@@ -10,8 +10,8 @@ const Main = () => {
   // console.log(listaLibros);
   const bookList = useSelector((state) => state.books);
 
-  const filterHandler = (title = '', genre = '', maxPages = 1000) => {
-    setListaLibros(getFilteredBooks(title, genre, maxPages));
+  const filterHandler = (title = '', genre = '', pages = []) => {
+    setListaLibros(getFilteredBooks(title, genre, pages));
   };
 
   useEffect(() => {
