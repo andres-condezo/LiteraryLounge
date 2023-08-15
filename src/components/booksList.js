@@ -2,21 +2,18 @@ import { PropTypes } from 'prop-types';
 import BookListHeader from './bookListHeder';
 import BookListCard from './bookListCard';
 
-const BookList = ({ listaLibros }) => {
-
-  return (
-    <section className="book-list">
-      <BookListHeader />
-      <div className="books-container">
-        {
+const BookList = ({ listaLibros }) => (
+  <section className="book-list">
+    <BookListHeader />
+    <div className="books-container">
+      {
           listaLibros && listaLibros.map((book) => (
             <BookListCard key={book.id} book={book} />
           ))
         }
-      </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 BookList.propTypes = {
   listaLibros: PropTypes.arrayOf(PropTypes.shape({
@@ -27,6 +24,6 @@ BookList.propTypes = {
       name: PropTypes.string.isRequired,
     }).isRequired,
   })).isRequired,
-}
+};
 
 export default BookList;
