@@ -1,19 +1,22 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { getBooks } from '../redux/booksSlice';
-import bookObject from '../data/books.json';
+import { useSelector } from 'react-redux';
+import BookListHeader from './bookListHeder';
+import BookListCard from './bookListCard';
 
-const BooksList = () => {
-  const dispatch = useDispatch();
+const BookList = () => {
   const books = useSelector((state) => state.books);
 
-  useEffect(() => {
-    dispatch(getBooks(bookObject));
-  }, []);
-
   return (
-    <div>{JSON.stringify(books)}</div>
+    <section className="book-list">
+      <BookListHeader />
+      <div className="books-container">
+        {
+          books && books.map((book) => (
+            <BookListCard key={book.id} book={book} />
+          ))
+        }
+      </div>
+    </section>
   );
 };
 
-export default BooksList;
+export default BookList;
