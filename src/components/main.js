@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import FilterAside from './FilterAside';
-import BooksList from './booksList';
+import BookList from './booksList';
 import getFilteredBooks from '../logic/getFilters';
 
 const Main = () => {
@@ -21,7 +21,7 @@ const Main = () => {
   return (
     <main>
       <FilterAside filterHandler={filterHandler} />
-      <BooksList listaLibros={listaLibros} />
+      <BookList listaLibros={listaLibros} />
     </main>
   );
 };

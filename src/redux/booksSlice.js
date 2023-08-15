@@ -16,6 +16,22 @@ const BookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
+    addBook: (state, action) => {
+      const id = action.payload;
+      const newInitialState = state.map((book) => {
+        if (book.id !== id) return book;
+        return { ...book, onReadList: true };
+      });
+      return newInitialState;
+    },
+    removeBook: (state, action) => {
+      const id = action.payload;
+      const newInitialState = state.map((book) => {
+        if (book.id !== id) return book;
+        return { ...book, onReadList: false };
+      });
+      return newInitialState;
+    },
   },
   extraReducers(builder) {
     builder
@@ -32,5 +48,5 @@ const BookSlice = createSlice({
   },
 });
 
-// Export the reducer, either as a default or named export
+export const { addBook, removeBook } = BookSlice.actions;
 export default BookSlice.reducer;
