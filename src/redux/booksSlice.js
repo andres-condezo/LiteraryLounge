@@ -1,20 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { loadState } from '../logic/localStorage';
-import books from '../data/books.json';
 
+const ReadingList = loadState();
+
+// Funciones asíncronas como consultas a la API (puede estar en cualquier otro archivo)
+export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () => (
+  fetch('books.json')
+    .then((response) => response.json())
+    .then((data) => data.library)
+    .catch((error) => error)
+));
+
+// Store Slices
 const BookSlice = createSlice({
   name: 'books',
   initialState: [],
   reducers: {
-    getBooks: () => {
-      const newInitialState = [];
-      const readingList = loadState();
-      books.library.forEach((book) => {
-        const isOnReadList = readingList.includes(book.book.id);
-        newInitialState.push({ ...book.book, onReadList: isOnReadList });
-      });
-      return newInitialState;
-    },
     addBook: (state, action) => {
       const id = action.payload;
       const newInitialState = state.map((book) => {
@@ -32,7 +33,20 @@ const BookSlice = createSlice({
       return newInitialState;
     },
   },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchAllBooks.fulfilled, (state, action) => {
+        // normalize fetched data
+        const newBookList = [];
+        action.payload.forEach((book) => {
+          const isOnReadList = ReadingList.includes(book.book.id);
+          newBookList.push({ ...book.book, onReadList: isOnReadList });
+        });
+        // Add any fetched books to the array
+        return newBookList;
+      });
+  },
 });
 
-export const { getBooks, addBook, removeBook } = BookSlice.actions;
+export const { addBook, removeBook } = BookSlice.actions;
 export default BookSlice.reducer;

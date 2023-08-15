@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import booksReducer, { getBooks } from './booksSlice';
+import booksReducer, { fetchAllBooks } from './booksSlice';
 
 const store = configureStore({
   reducer: {
@@ -7,5 +7,6 @@ const store = configureStore({
   },
 });
 
-store.dispatch(getBooks());
+store.dispatch(fetchAllBooks());
+
 export default store;
