@@ -8,7 +8,7 @@
   width: calc(100% - 60px);
 }
 
-.slider  {
+.slider {
   height: 5px;
   border-radius: 5px;
   background: gray;
@@ -62,12 +62,6 @@
   display: flex;
 }
 
-.range__field input[type=number]::-webkit-inner-spin-button,
-.range__field input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-
 .range__field input[type=number] {
   -moz-appearance: textfield;
   appearance: none;
@@ -76,4 +70,10 @@
   border-radius: 3px;
   text-align: center;
   font-size: 10px;
+}
+
+.range__field input[type=number]::-webkit-inner-spin-button,
+.range__field input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
