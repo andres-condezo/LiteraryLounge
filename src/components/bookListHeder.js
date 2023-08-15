@@ -9,11 +9,11 @@ const BookListHeader = () => (
       <span className="line"> / </span>
     </h1>
     <div className="counters">
-      <FiFilter />
-      30
-      <BiBookBookmark />
+      <FiFilter title="Filtered books" />
       20
-      <MdOutlineBookmarkAdd />
+      <BiBookBookmark title="Available books" />
+      30
+      <MdOutlineBookmarkAdd title="Books on reading list" />
       2
     </div>
   </div>

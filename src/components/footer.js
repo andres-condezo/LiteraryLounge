@@ -1,11 +1,11 @@
 const Footer = () => (
   <footer>
-    <span>
+    <div className="logo">
       <b>
         Literary
       </b>
       Lounge
-    </span>
+    </div>
     Copyright © 2023
   </footer>
 );

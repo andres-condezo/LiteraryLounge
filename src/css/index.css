@@ -174,16 +174,16 @@ main {
   color: var(--white-color);
 }
 
- .img--reserved {
+.img--reserved {
   opacity: 0.5;
 }
 
-.--not-reserved:before {
+.--not-reserved::before {
   content: "Add to read";
   font-size: initial;
 }
 
-.--reserved:before {
+.--reserved::before {
   content: "Remove Book";
   font-size: initial;
 }
@@ -207,6 +207,6 @@ footer {
   gap: 1rem;
 }
 
-footer span {
+footer .logo {
   font-size: 1.8rem;
 }
