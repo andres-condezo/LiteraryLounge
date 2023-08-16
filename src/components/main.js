@@ -5,23 +5,21 @@ import BookList from './booksList';
 import getFilteredBooks from '../logic/getFilters';
 
 const Main = () => {
-  const [listaLibros, setListaLibros] = useState([]);
-  // console.log('---------------LISTA LIBROS------------------');
-  // console.log(listaLibros);
+  const [bookArray, setBookArray] = useState([]);
   const bookList = useSelector((state) => state.books);
 
   const filterHandler = (title = '', genre = '', pages = []) => {
-    setListaLibros(getFilteredBooks(title, genre, pages));
+    setBookArray(getFilteredBooks(title, genre, pages));
   };
 
   useEffect(() => {
-    setListaLibros(bookList);
+    setBookArray(bookList);
   }, [bookList]);
 
   return (
     <main>
       <FilterAside filterHandler={filterHandler} />
-      <BookList listaLibros={listaLibros} />
+      <BookList bookArray={bookArray} />
     </main>
   );
 };

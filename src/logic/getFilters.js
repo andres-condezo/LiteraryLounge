@@ -3,7 +3,6 @@ import store from '../redux/store';
 // FILTERS
 const getFilteredBooks = (title, genre, pages) => {
   const { books } = store.getState();
-  console.log('-----PAGES-----------: ', pages);
   const existRange = pages.length === 2;
   if (title === '' && genre === '' && !existRange) return books;
 
@@ -22,7 +21,6 @@ const getFilteredBooks = (title, genre, pages) => {
 
     return book.pages >= pages[0] && book.pages <= pages[1];
   });
-  console.log(filteredList);
   return filteredList;
 };
 

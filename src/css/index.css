@@ -60,7 +60,7 @@ header {
 
 main {
   width: 100%;
-  height: calc(100vh - 11rem);
+  min-height: calc(100vh - 11rem);
   padding: 4rem 5%;
   margin-top: 8rem;
   background-color: var(--white-color);
@@ -81,30 +81,80 @@ main {
 }
 
 .book-list .book-list-header {
-  padding: 3rem 4rem;
+  padding: 2rem 4rem 4rem 4rem;
+  margin-bottom: 4rem;
+  border-bottom: 1px dashed var(--grey-color);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
+.book-list-header .title {
+  font-size: 2.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-list-header .title h1 {
+  font-size: 3.4rem;
+}
+
+.book-list-header .title span {
+  margin: 0 1rem;
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--grey-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
 .book-list-header .counters {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 1rem;
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 300;
 }
 
-.book-list h1 {
-  font-size: 4rem;
+.counters div.tip {
+  margin-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 }
 
-.book-list h1 span {
-  font-size: 3rem;
-  margin: 0 1rem;
-  font-weight: 300;
-  color: var(--grey-color);
+.counters div.tip:hover {
+  cursor: help;
+  position: relative;
+}
+
+.counters div.tip span {
+  display: none;
+}
+
+.counters div.tip:hover span {
+  width: auto;
+  color: var(--prmary-color);
+  background-color: var(--white-color);
+  padding: 0.5rem 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-align: center;
+  border: 1px dashed var(--primary-color);
+  border-radius: 37px 37px 37px 37px;
+  z-index: 100;
+  left: -5rem;
+  position: absolute;
+  top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .book-list .books-container {
