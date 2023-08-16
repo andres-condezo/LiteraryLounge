@@ -1,29 +1,38 @@
 import { PropTypes } from 'prop-types';
+import { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import BookListHeader from './bookListHeader';
 import BookListCard from './bookListCard';
+import getFilteredBooks from '../logic/getFilters';
 
-const BookList = ({ bookArray }) => (
-  <section className="book-list">
-    <BookListHeader bookArray={bookArray} />
-    <div className="books-container">
-      {
-        bookArray && bookArray.map((book) => (
-          <BookListCard key={book.id} book={book} />
-        ))
-      }
-    </div>
-  </section>
-);
+const BookList = ({ filters }) => {
+  const [filteredBookList, setFilteredBookList] = useState([]);
+  const bookList = useSelector((state) => state.books);
+
+  useEffect(() => {
+    setFilteredBookList(getFilteredBooks(filters.title, filters.genre, filters.pages));
+  }, [bookList, filters]);
+
+  return (
+    <section className="book-list">
+      <BookListHeader bookArray={filteredBookList} />
+      <div className="books-container">
+        {
+          filteredBookList && filteredBookList.map((book) => (
+            <BookListCard key={book.id} book={book} />
+          ))
+        }
+      </div>
+    </section>
+  );
+};
 
 BookList.propTypes = {
-  bookArray: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
+  filters: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    author: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  })).isRequired,
+    genre: PropTypes.string.isRequired,
+    pages: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }).isRequired,
 };
 
 export default BookList;

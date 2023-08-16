@@ -1,25 +1,18 @@
-import { useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import FilterAside from './FilterAside';
 import BookList from './bookList';
-import getFilteredBooks from '../logic/getFilters';
 
 const Main = () => {
-  const [bookArray, setBookArray] = useState([]);
-  const bookList = useSelector((state) => state.books);
+  const [filters, setFilters] = useState({ title: '', genre: '', pages: [] });
 
   const filterHandler = (title = '', genre = '', pages = []) => {
-    setBookArray(getFilteredBooks(title, genre, pages));
+    setFilters({ title, genre, pages });
   };
-
-  useEffect(() => {
-    setBookArray(bookList);
-  }, [bookList]);
 
   return (
     <main>
       <FilterAside filterHandler={filterHandler} />
-      <BookList bookArray={bookArray} />
+      <BookList filters={filters} />
     </main>
   );
 };
