@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types';
-import BookListHeader from './bookListHeder';
+import BookListHeader from './bookListHeader';
 import BookListCard from './bookListCard';
 
 const BookList = ({ bookArray }) => (
