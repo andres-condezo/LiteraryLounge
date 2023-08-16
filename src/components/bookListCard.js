@@ -5,22 +5,31 @@ const BookListCard = ({
   book: {
     id, cover, title, author, onReadList,
   },
-}) => (
-  <article>
-    <picture>
-      <img
-        src={cover}
-        alt={title}
-        className={`${onReadList ? 'img--reserved' : ''}`}
-      />
-    </picture>
-    <div className="card-info">
-      <h4>{title}</h4>
-      <p>{author.name}</p>
-    </div>
-    <Btn id={id} onReadList={onReadList} />
-  </article>
-);
+}) => {
+  const handleClick = () => { console.log('clicked'); };
+
+  return (
+    <article className="book-list-card">
+      <button
+        className={`btn-modal ${onReadList ? 'btn-modal--reserved' : ''}`}
+        type="button"
+        onClick={handleClick}
+      >
+        <picture>
+          <img
+            src={cover}
+            alt={title}
+          />
+        </picture>
+        <div className="card-info">
+          <h4>{title}</h4>
+          <p>{author.name}</p>
+        </div>
+      </button>
+      <Btn id={id} onReadList={onReadList} />
+    </article>
+  );
+};
 
 BookListCard.propTypes = {
   book: PropTypes.shape({
@@ -33,5 +42,4 @@ BookListCard.propTypes = {
     onReadList: PropTypes.bool.isRequired,
   }).isRequired,
 };
-
 export default BookListCard;

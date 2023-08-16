@@ -24,6 +24,7 @@ const BookListHeader = ({ bookArray }) => {
         </span>
       </div>
       <div className="counters">
+        <p>Count Check: </p>
         <div className="tip">
           <FiFilter />
           <span>Filtered books</span>
@@ -36,7 +37,7 @@ const BookListHeader = ({ bookArray }) => {
         </div>
         <div className="tip">
           <MdOutlineBookmarkAdd />
-          <span>Reading list</span>
+          <span>Reading queue</span>
           {readingList.length}
         </div>
       </div>

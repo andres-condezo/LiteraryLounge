@@ -25,9 +25,10 @@ const Btn = ({ onReadList, id }) => {
     <button
       type="button"
       id={id}
-      title="titulo de prueba"
-      aria-label={`${onReadList ? 'Remove' : 'Add'} book from reading list`}
-      className={`btn add-btn ${onReadList ? '--reserved' : '--not-reserved'}`}
+      aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
+      className={`btn add-btn ${onReadList
+        ? 'add-btn--reserved'
+        : 'add-btn--not-reserved'}`}
       onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
     />
   );
