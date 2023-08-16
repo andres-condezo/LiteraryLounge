@@ -1,79 +1,23 @@
-.box__range-slider {
+.range__slider1 {
   width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.range__slider {
-  width: calc(100% - 60px);
-}
-
-.slider {
   height: 5px;
   border-radius: 5px;
   background: gray;
-  position: relative;
 }
 
-.slider .progress-bar {
-  height: 5px;
-  border-radius: 5px;
-  background: aquamarine;
-  position: absolute;
-  left: 25%;
-  right: 25%;
-}
-
-.range__input {
-  position: relative;
-}
-
-.range__input input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  position: absolute;
-  top: -5px;
-  height: 5px;
-  width: 100%;
-  background: none;
-  pointer-events: auto;
-  cursor: pointer;
-}
-
-.range__input input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
+.range__slider1 .thumb {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  pointer-events: auto;
-  background: red;
-  margin-top: -6px;
-}
-
-.range__input input[type="range"]::-webkit-slider-runnable-track {
-  -webkit-appearance: none;
-  appearance: none;
-  height: 1px;
-}
-
-.range__field {
-  width: 30px;
-  display: flex;
-}
-
-.range__field input[type=number] {
-  -moz-appearance: textfield;
-  appearance: none;
-  width: 100%;
   border: 1px solid gray;
-  border-radius: 3px;
-  text-align: center;
-  font-size: 10px;
+  background: red;
+  cursor: grab;
+  position: absolute;
+  top: -5px;
 }
 
-.range__field input[type=number]::-webkit-inner-spin-button,
-.range__field input[type=number]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+.track-1 {
+  height: 5px;
+  background: green;
+  border-radius: 5px;
 }

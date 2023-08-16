@@ -1,19 +1,8 @@
 import { PropTypes } from 'prop-types';
-import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const SelectFilter = ({ setGenreFilterHandler }) => {
   const [genre, setGenre] = useState('');
-  const [genreList, setGenreList] = useState([]);
-  const bookList = useSelector((state) => state.books);
-
-  useEffect(() => {
-    const genreSet = new Set();
-    bookList.forEach((book) => {
-      genreSet.add(book.genre);
-    });
-    setGenreList(Array.from(genreSet));
-  }, [bookList, setGenreList]);
 
   const onChangeSelectFilter = (e) => {
     const genreValue = e.target.value;
@@ -32,12 +21,10 @@ const SelectFilter = ({ setGenreFilterHandler }) => {
         value={genre}
       >
         <option value="">Select an Option</option>
-        {
-          genreList && genreList.map((gen) => (
-            <option key={gen} value={gen}>{gen}</option>
-          ))
-        }
-
+        <option value="Fantasía">Fantasía</option>
+        <option value="Ciencia ficción">Ciencia ficción</option>
+        <option value="Zombies">Zombies</option>
+        <option value="Terror">Terror</option>
       </select>
     </div>
   );
