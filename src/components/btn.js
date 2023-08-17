@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { addBook, removeBook } from '../redux/booksSlice';
+import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
 import { loadState, saveState } from '../logic/localStorage';
 
 const Btn = ({ onReadList, id }) => {
@@ -12,6 +13,11 @@ const Btn = ({ onReadList, id }) => {
     dispatch(addBook(bookId));
     readingList = [...readingList, bookId];
     saveState(readingList);
+    dispatch(setAnimated(true));
+    dispatch(setAnimated(true));
+    setTimeout(() => {
+      dispatch(resetAnimated());
+    }, 500);
   };
 
   const handleRemoveBook = (e) => {
