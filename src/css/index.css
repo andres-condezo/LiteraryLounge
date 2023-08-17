@@ -2,6 +2,7 @@
 :root {
   --primary-color: #2d1910;
   --accent-color: #daaa63;
+  --bg-color: #f3e5d1;
   --brown-color: #5b3703;
   --grey-color: #434b54;
   --white-color: #f8f3ed;
@@ -70,18 +71,99 @@ main {
 }
 
 .aside__filter {
-  padding-right: 1rem;
+  padding-top: 2rem;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  border-right: 1px dashed var(--primary-color);
+}
+
+.browser h3 {
+  margin-bottom: 1rem;
+}
+
+.browser input {
+  /* all: unset; */
+  width: 100%;
+  padding: 1rem;
+  font-size: 14px;
+  color: var(--primary-color);
+  background-color: var(--white-color);
+  border-radius: 8px;
+}
+
+.browser input::-webkit-clear-button {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 1;
+  border: none;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.aside__filter .filters {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.aside__filter .filters .box__filter h5 {
+  width: 100%;
+  height: 4rem;
+  margin-bottom: 1rem;
+  background-color: var(--bg-color);
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.aside__filter .filters .box__filter ul {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-color);
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.aside__filter ul li {
+  display: flex;
+  border-bottom: 2px solid var(--white-color);
+  list-style: none;
+  cursor: pointer;
+  padding: 0 2rem;
+}
+
+.select-btn {
+  all: unset;
+  padding: 1rem;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.select-btn:hover {
+  font-weight: bold;
+}
+
+.select-btn--pressed {
+  font-weight: bold;
 }
 
 .book-list {
-  flex: 3;
   padding: 0 1rem;
   width: 100%;
-  font-size: 1.6rem;
+  font-size: 2rem;
 }
 
 .book-list .book-list-header {
-  padding: 2rem 4rem 4rem 4rem;
+  padding: 2rem 2rem 4rem 2rem;
   margin-bottom: 4rem;
   border-bottom: 1px dashed var(--grey-color);
   display: flex;
@@ -216,10 +298,12 @@ main {
 .book-list .card-info {
   width: 100%;
   height: 30%;
+  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
 }
 
 .card-info p {
@@ -255,7 +339,7 @@ main {
 }
 
 .add-btn--reserved::before {
-  content: "Remove Book";
+  content: "Unlist title";
   font-size: initial;
 }
 
@@ -265,7 +349,7 @@ main {
 }
 
 .btn-modal--reserved {
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .reading-list {
@@ -289,4 +373,23 @@ footer {
 
 footer .logo {
   font-size: 1.8rem;
+}
+
+.list-btn {
+  animation: colorChange 0.5s ease;
+}
+
+@keyframes colorChange {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+    font-weight: bold;
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }

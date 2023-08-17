@@ -16,7 +16,7 @@ const SearchBar = ({ setTitleFilterHandler }) => {
         type="search"
         name="input__search-title"
         id="input__search-title"
-        placeholder="Título de libro"
+        placeholder="Book title"
         className="form-control"
         onChange={onChangeSearchBar}
         value={searchValue}

@@ -2,8 +2,15 @@ import { PropTypes } from 'prop-types';
 import { useState } from 'react';
 
 const SelectFilter = ({ setGenreFilterHandler }) => {
-  const [genre, setGenre] = useState('');
+  const genresArr = [
+    { value: '', text: 'All' },
+    { value: 'Fantasy', text: 'Fantasy' },
+    { value: 'Sci-Fi', text: 'Sci-Fi' },
+    { value: 'Zombies', text: 'Zombies' },
+    { value: 'Horror', text: 'Horror' },
+  ];
 
+  const [genre, setGenre] = useState('');
   const onChangeSelectFilter = (e) => {
     const genreValue = e.target.value;
     setGenre(genreValue);
@@ -11,22 +18,28 @@ const SelectFilter = ({ setGenreFilterHandler }) => {
   };
 
   return (
-    <div className="box__filter">
-      <h5>GENRES</h5>
-      <select
-        name="genre"
-        id="genre"
-        className="form-control"
-        onChange={onChangeSelectFilter}
-        value={genre}
-      >
-        <option value="">Select an Option</option>
-        <option value="Fantasía">Fantasía</option>
-        <option value="Ciencia ficción">Ciencia ficción</option>
-        <option value="Zombies">Zombies</option>
-        <option value="Terror">Terror</option>
-      </select>
-    </div>
+    <>
+      <div className="box__filter">
+        <h5>GENRES</h5>
+        <ul>
+          { genresArr && genresArr.map(({ value, text }) => (
+            <li key={text}>
+              <button
+                type="button"
+                className={`select-btn
+                  ${genre === value
+                  ? 'select-btn--pressed'
+                  : ''}`}
+                value={value}
+                onClick={onChangeSelectFilter}
+              >
+                {text}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

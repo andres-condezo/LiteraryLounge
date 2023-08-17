@@ -19,11 +19,15 @@ const FilterAside = ({ filterHandler }) => {
 
   return (
     <aside className="aside__filter">
-      <h3>BROWSER</h3>
-      <SearchBar setTitleFilterHandler={setTitleFilterHandler} />
-      <h3>FILTERS</h3>
-      <SelectFilter setGenreFilterHandler={setGenreFilterHandler} />
-      <RangeBar setPagesFilterHandler={setPagesFilterHandler} pagesFilter={pagesFilter} />
+      <div className="browser">
+        <h3>BROWSER</h3>
+        <SearchBar setTitleFilterHandler={setTitleFilterHandler} />
+      </div>
+      <div className="filters">
+        <h3>FILTERS</h3>
+        <RangeBar setPagesFilterHandler={setPagesFilterHandler} pagesFilter={pagesFilter} />
+        <SelectFilter setGenreFilterHandler={setGenreFilterHandler} />
+      </div>
     </aside>
   );
 };
