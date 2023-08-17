@@ -10,14 +10,16 @@ const Btn = ({ onReadList, id }) => {
   const handleAddBook = (e) => {
     const bookId = Number(e.target.id);
     dispatch(addBook(bookId));
-    readingList = [...readingList, bookId];
+    let readingList = loadState();
+    readingList = [...readingList, { bookId, priority: 1 }];
+    readingList.sort((x, y) => y.priority - x.priority);
     saveState(readingList);
   };
 
   const handleRemoveBook = (e) => {
     const bookId = Number(e.target.id);
     dispatch(removeBook(bookId));
-    readingList = readingList.filter((item) => item !== bookId);
+    readingList = readingList.filter((item) => item.bookId !== bookId);
     saveState(readingList);
   };
 
