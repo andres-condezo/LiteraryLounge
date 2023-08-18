@@ -1,4 +1,5 @@
 import store from '../redux/store';
+import { loadState } from './localStorage';
 
 // FILTERS
 const getFilteredBooks = (title, genre, pages) => {
@@ -24,4 +25,16 @@ const getFilteredBooks = (title, genre, pages) => {
   return filteredList;
 };
 
-export default getFilteredBooks;
+const getReadingBooks = () => {
+  const { books } = store.getState();
+  const filteredList = books.filter((book) => book.onReadList);
+  const ReadingList = loadState();
+  const sorteredList = [];
+  ReadingList.forEach((element) => {
+    const book = filteredList.find((e) => e.id === element.bookId);
+    if (book) sorteredList.push(book);
+  });
+  return sorteredList;
+};
+
+export { getFilteredBooks, getReadingBooks };

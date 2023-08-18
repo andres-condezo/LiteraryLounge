@@ -39,7 +39,9 @@ const BookSlice = createSlice({
         // normalize fetched data
         const newBookList = [];
         action.payload.forEach((book) => {
-          const isOnReadList = ReadingList.includes(book.book.id);
+          let isOnReadList = false;
+          const found = ReadingList.find((b) => b.bookId === book.book.id);
+          if (found) isOnReadList = true;
           newBookList.push({ ...book.book, onReadList: isOnReadList });
         });
         // Add any fetched books to the array
