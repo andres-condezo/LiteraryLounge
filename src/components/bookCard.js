@@ -6,7 +6,7 @@ import { addBook, removeBook } from '../redux/booksSlice';
 import { loadState, saveState } from '../logic/localStorage';
 import Btn from './btn';
 
-const BookListCard = ({ book, availableBook, sortReadingList }) => {
+const BookCard = ({ book, availableBook, sortReadingList }) => {
   const {
     id, cover, title, author, onReadList,
   } = book;
@@ -63,7 +63,7 @@ const BookListCard = ({ book, availableBook, sortReadingList }) => {
   };
 
   return (
-    <article className="book-list-card">
+    <article className="book-card">
       <button
         className={`btn-modal ${onReadList ? 'btn-modal--reserved' : ''}`}
         type="button"
@@ -76,7 +76,6 @@ const BookListCard = ({ book, availableBook, sortReadingList }) => {
             onDragStart={dragStart}
             src={cover}
             alt={title}
-            className={`${onReadList && availableBook ? 'img--reserved' : ''}`}
           />
         </picture>
         <div className="card-info">
@@ -84,16 +83,14 @@ const BookListCard = ({ book, availableBook, sortReadingList }) => {
           <p>{author.name}</p>
         </div>
         <div className={`card-priority ${availableBook ? '' : 'priority--display'}`}>
-          {
-            starList.map((index) => (
-              <BiSolidStar
-                key={index}
-                data-item={id}
-                className={`${index <= priority ? 'priority--fill' : 'priority--empty'}`}
-                onClick={(e) => onClickPriorityLevel(e, index)}
-              />
-            ))
-          }
+          {starList.map((index) => (
+            <BiSolidStar
+              key={index}
+              data-item={id}
+              className={`${index <= priority ? 'priority--fill' : 'priority--empty'}`}
+              onClick={(e) => onClickPriorityLevel(e, index)}
+            />
+          ))}
         </div>
       </button>
       <Btn id={id} onReadList={onReadList} />
@@ -101,11 +98,11 @@ const BookListCard = ({ book, availableBook, sortReadingList }) => {
   );
 };
 
-BookListCard.defaultProps = {
+BookCard.defaultProps = {
   sortReadingList: () => true,
 };
 
-BookListCard.propTypes = {
+BookCard.propTypes = {
   book: PropTypes.shape({
     id: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
@@ -119,4 +116,4 @@ BookListCard.propTypes = {
   sortReadingList: PropTypes.func,
 };
 
-export default BookListCard;
+export default BookCard;
