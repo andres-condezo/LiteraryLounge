@@ -250,7 +250,7 @@ main {
   align-content: start;
 }
 
-.book-list-card {
+.book-card {
   min-height: 24rem;
   max-width: 30rem;
   padding: 4rem 5rem;
@@ -291,7 +291,7 @@ main {
   object-fit: fill;
 }
 
-.book-list-card:hover {
+.book-card:hover {
   transform: translateY(-0.5rem);
 }
 
@@ -339,7 +339,7 @@ main {
 }
 
 .add-btn--reserved::before {
-  content: "Unlist title";
+  content: "Unlist book";
   font-size: initial;
 }
 
