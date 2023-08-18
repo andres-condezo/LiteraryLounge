@@ -13,8 +13,7 @@ const Btn = ({ onReadList, id }) => {
     dispatch(addBook(bookId));
     readingList = [...readingList, bookId];
     saveState(readingList);
-    dispatch(setAnimated(true));
-    dispatch(setAnimated(true));
+    dispatch(setAnimated());
     setTimeout(() => {
       dispatch(resetAnimated());
     }, 500);

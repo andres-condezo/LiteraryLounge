@@ -7,8 +7,8 @@ const ListBtnSlice = createSlice({
     isAnimated: false,
   },
   reducers: {
-    setAnimated: (state, action) => {
-      state.isAnimated = action.payload;
+    setAnimated: (state) => {
+      state.isAnimated = true;
     },
     resetAnimated: (state) => {
       state.isAnimated = false;
