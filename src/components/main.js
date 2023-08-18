@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FilterAside from './FilterAside';
 import BookList from './booksList';
+import BookReadingList from './BookReadingList';
 
 const Main = () => {
   const [filters, setFilters] = useState({ title: '', genre: '', pages: [] });
@@ -13,6 +14,7 @@ const Main = () => {
     <main>
       <FilterAside filterHandler={filterHandler} />
       <BookList filters={filters} />
+      <BookReadingList />
     </main>
   );
 };
