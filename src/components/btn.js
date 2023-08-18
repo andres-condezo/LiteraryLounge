@@ -10,11 +10,13 @@ const Btn = ({ onReadList, id }) => {
 
   const handleAddBook = (e) => {
     const bookId = Number(e.target.id);
-    dispatch(addBook(bookId));
     let readingList = loadState();
-    readingList = [...readingList, { bookId, priority: 1 }];
-    readingList.sort((x, y) => y.priority - x.priority);
-    saveState(readingList);
+    if (!onReadList) {
+      dispatch(addBook(bookId));
+      readingList = [...readingList, { bookId, priority: 1 }];
+      readingList.sort((x, y) => y.priority - x.priority);
+      saveState(readingList);
+    }
     dispatch(setAnimated());
     setTimeout(() => {
       dispatch(resetAnimated());
