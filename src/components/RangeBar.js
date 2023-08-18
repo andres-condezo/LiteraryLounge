@@ -10,13 +10,13 @@ const RangeBar = ({ setPagesFilterHandler }) => {
   const [rangeValue, setRangeValue] = useState([MIN, MAX]);
 
   const onChangeMinRangeBar = (e) => {
-    let minValue = e.target.value;
+    let minValue = Number(e.target.value);
     setRangeValue([minValue, rangeValue[1]]);
     if (minValue.toString() === '') minValue = MIN;
     setPagesFilterHandler([minValue, rangeValue[1]]);
   };
   const onChangeMaxRangeBar = (e) => {
-    let maxValue = e.target.value;
+    let maxValue = Number(e.target.value);
     setRangeValue([rangeValue[0], maxValue]);
     if (maxValue.toString() === '') maxValue = MAX;
     setPagesFilterHandler([rangeValue[0], maxValue]);
