@@ -10,8 +10,9 @@ const AddRemoveBookBtn = ({
   const Component = as || 'button';
   let btnClass = '';
   let ariaLabel = '';
+  const isButton = as === 'button';
 
-  if (as === 'button') {
+  if (isButton) {
     btnClass = `btn add-btn ${onReadList
       ? 'add-btn--reserved'
       : 'add-btn--not-reserved'}`;
@@ -48,13 +49,18 @@ const AddRemoveBookBtn = ({
     else handleRemoveBook(e);
   };
 
+  const handleClick = (e) => {
+    if (onReadList) handleRemoveBook(e);
+    else handleAddBook(e);
+  };
+
   return (
     <Component
       type={type}
       id={id}
       aria-label={ariaLabel}
       className={btnClass}
-      onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
+      onClick={(e) => { if (isButton) handleClick(e); }}
       onDragStart={dragStart}
       draggable
       src={src}
