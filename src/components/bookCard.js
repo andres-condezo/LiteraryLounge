@@ -1,20 +1,22 @@
 import PropTypes from 'prop-types';
+import { useState } from 'react';
 import AddRemoveBookBtn from './addRemoveBookBtn';
 import CardPriority from './cardPriority';
+import Modal from './modal';
 
 const BookCard = ({
   book: {
-    id, cover, title, author, onReadList,
+    id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList,
   }, availableBook, sortReadingList,
 }) => {
-  const handleClick = () => { console.log('clicked'); };
+  const [modalState, setModalState] = useState(false);
 
   return (
     <article className="book-card">
       <button
         className={`btn-modal ${onReadList ? 'btn-modal--reserved' : ''}`}
         type="button"
-        onClick={handleClick}
+        onClick={() => { setModalState(!modalState); }}
       >
         <picture>
           <AddRemoveBookBtn
@@ -41,6 +43,37 @@ const BookCard = ({
         id={id}
         onReadList={onReadList}
       />
+      <Modal modalState={modalState} setModalState={setModalState}>
+        <div className="modal__main">
+          <picture>
+            <img src={cover} alt={title} />
+          </picture>
+          <div className="modal__info">
+            <h4>{title}</h4>
+            <h5>{author.name}</h5>
+            <p>
+              <b>Genre:&nbsp;</b>
+              {genre}
+            </p>
+            <p>
+              <b>Year:&nbsp;</b>
+              {year}
+            </p>
+            <p>
+              <b>ISBN:&nbsp;</b>
+              {ISBN}
+            </p>
+            <p>
+              <b>Pages:&nbsp;</b>
+              {pages}
+            </p>
+            <p className="modal__info--p">
+              <b>Synopsis:&nbsp;</b>
+              {synopsis}
+            </p>
+          </div>
+        </div>
+      </Modal>
     </article>
   );
 };
@@ -57,6 +90,11 @@ BookCard.propTypes = {
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
+    synopsis: PropTypes.string.isRequired,
+    year: PropTypes.number.isRequired,
+    pages: PropTypes.number.isRequired,
+    genre: PropTypes.string.isRequired,
+    ISBN: PropTypes.string.isRequired,
     onReadList: PropTypes.bool.isRequired,
   }).isRequired,
   availableBook: PropTypes.bool.isRequired,
