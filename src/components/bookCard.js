@@ -1,66 +1,13 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { BiSolidStar } from 'react-icons/bi';
-import { addBook, removeBook } from '../redux/booksSlice';
-import { loadState, saveState } from '../logic/localStorage';
-import Btn from './btn';
+import AddRemoveBookBtn from './addRemoveBookBtn';
+import CardPriority from './cardPriority';
 
-const BookCard = ({ book, availableBook, sortReadingList }) => {
-  const {
+const BookCard = ({
+  book: {
     id, cover, title, author, onReadList,
-  } = book;
-  const starList = [1, 2, 3, 4, 5];
-
+  }, availableBook, sortReadingList,
+}) => {
   const handleClick = () => { console.log('clicked'); };
-
-  const dispatch = useDispatch();
-  const [priority, setPriority] = useState(1);
-  let readingList = loadState();
-
-  useEffect(() => {
-    readingList.forEach((ele) => {
-      if (ele.bookId === id) setPriority(ele.priority);
-    });
-  }, [priority]);
-
-  const handleAddBook = (e) => {
-    const bookId = Number(e.target.id);
-    let readingList = loadState();
-    if (!onReadList) {
-      dispatch(addBook(bookId));
-      readingList = [...readingList, { bookId, priority: 1 }];
-      readingList.sort((x, y) => y.priority - x.priority);
-      saveState(readingList);
-    }
-  };
-
-  const handleRemoveBook = (e) => {
-    const bookId = Number(e.target.id);
-    dispatch(removeBook(bookId));
-    readingList = readingList.filter((item) => item.bookId !== bookId);
-    saveState(readingList);
-  };
-
-  const dragStart = (e) => {
-    if (availableBook) handleAddBook(e);
-    else handleRemoveBook(e);
-  };
-
-  const onClickPriorityLevel = (e, index) => {
-    const itemId = index < priority
-      ? e.target.parentNode.getAttribute('data-item')
-      : e.target.getAttribute('data-item');
-
-    setPriority(index);
-    readingList = readingList.map((ele) => {
-      if (ele.bookId === Number(itemId)) return { ...ele, priority: index };
-      return ele;
-    });
-    readingList.sort((x, y) => y.priority - x.priority);
-    saveState(readingList);
-    sortReadingList();
-  };
 
   return (
     <article className="book-card">
@@ -70,30 +17,30 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
         onClick={handleClick}
       >
         <picture>
-          <img
+          <AddRemoveBookBtn
+            as="img"
             id={id}
-            draggable
-            onDragStart={dragStart}
+            onReadList={onReadList}
             src={cover}
             alt={title}
+            availableBook={availableBook}
           />
         </picture>
         <div className="card-info">
           <h4>{title}</h4>
           <p>{author.name}</p>
         </div>
-        <div className={`card-priority ${availableBook ? '' : 'priority--display'}`}>
-          {starList.map((index) => (
-            <BiSolidStar
-              key={index}
-              data-item={id}
-              className={`${index <= priority ? 'priority--fill' : 'priority--empty'}`}
-              onClick={(e) => onClickPriorityLevel(e, index)}
-            />
-          ))}
-        </div>
       </button>
-      <Btn id={id} onReadList={onReadList} />
+      <CardPriority
+        id={id}
+        availableBook={availableBook}
+        sortReadingList={sortReadingList}
+      />
+      <AddRemoveBookBtn
+        as="button"
+        id={id}
+        onReadList={onReadList}
+      />
     </article>
   );
 };
