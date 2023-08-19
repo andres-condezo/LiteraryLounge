@@ -21,7 +21,7 @@ const BookList = ({ filters }) => {
 
   return (
     <section className="book-list">
-      <BookListHeader bookArray={filteredBookList} />
+      <BookListHeader filteredBookList={filteredBookList} />
       <div className="books-container" onDragOver={draggingOver}>
         {filteredBookList && filteredBookList.map((book) => (
           <BookCard

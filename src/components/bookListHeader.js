@@ -6,8 +6,8 @@ import { TbSlash } from 'react-icons/tb';
 import { useSelector } from 'react-redux';
 import { loadState } from '../logic/localStorage';
 
-const BookListHeader = ({ bookArray }) => {
-  const genre = [...new Set(bookArray.map((book) => book.genre))];
+const BookListHeader = ({ filteredBookList }) => {
+  const genre = [...new Set(filteredBookList.map((book) => book.genre))];
   const filteredGenre = genre.length > 1 ? null : genre;
   const bookList = useSelector((state) => state.books);
   const readingList = loadState();
@@ -28,7 +28,7 @@ const BookListHeader = ({ bookArray }) => {
         <div className="tip">
           <FiFilter />
           <span>Filtered books</span>
-          {bookArray.length}
+          {filteredBookList.length}
         </div>
         <div className="tip">
           <BiBookBookmark />
@@ -46,7 +46,7 @@ const BookListHeader = ({ bookArray }) => {
 };
 
 BookListHeader.propTypes = {
-  bookArray: PropTypes.arrayOf(PropTypes.shape({
+  filteredBookList: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number.isRequired,
     cover: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
