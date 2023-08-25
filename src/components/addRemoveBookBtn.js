@@ -1,5 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
+import { BiSolidBookmark } from 'react-icons/bi';
 import { addBook, removeBook } from '../redux/booksSlice';
 import { loadState, saveState } from '../logic/localStorage';
 import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
@@ -10,9 +11,9 @@ const AddRemoveBookBtn = ({
   const Component = as || 'button';
   let btnClass = '';
   let ariaLabel = '';
-  const isButton = as === 'button';
+  const isTypeButton = as === 'button';
 
-  if (isButton) {
+  if (isTypeButton) {
     btnClass = `btn add-btn ${onReadList
       ? 'add-btn--reserved'
       : 'add-btn--not-reserved'}`;
@@ -60,12 +61,14 @@ const AddRemoveBookBtn = ({
       id={id}
       aria-label={ariaLabel}
       className={btnClass}
-      onClick={(e) => { if (isButton) handleClick(e); }}
+      onClick={(e) => { if (isTypeButton) handleClick(e); }}
       onDragStart={dragStart}
       draggable
       src={src}
       alt={alt}
-    />
+    >
+      <BiSolidBookmark />
+    </Component>
   );
 };
 

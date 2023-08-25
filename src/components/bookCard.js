@@ -60,12 +60,12 @@ const BookCard = ({
               {year}
             </p>
             <p>
-              <b>ISBN:&nbsp;</b>
-              {ISBN}
-            </p>
-            <p>
               <b>Pages:&nbsp;</b>
               {pages}
+            </p>
+            <p>
+              <b>ISBN:&nbsp;</b>
+              {ISBN}
             </p>
             <p className="modal__info--p">
               <b>Synopsis:&nbsp;</b>
