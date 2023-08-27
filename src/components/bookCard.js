@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import AddRemoveBookBtn from './addRemoveBookBtn';
+import { useDispatch } from 'react-redux';
+import { BiSolidBookmark } from 'react-icons/bi';
+import { loadState, saveState } from '../logic/localStorage';
+import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
+import { addBook, removeBook } from '../redux/booksSlice';
 import CardPriority from './cardPriority';
 import Modal from './modal';
 
@@ -11,6 +15,36 @@ const BookCard = ({
 }) => {
   const [modalState, setModalState] = useState(false);
 
+  const dispatch = useDispatch();
+
+  const handleAddBook = (e) => {
+    const bookId = Number(e.target.id);
+    let readingList = loadState();
+    if (!onReadList) {
+      dispatch(addBook(bookId));
+      readingList = [...readingList, { bookId, priority: 1 }];
+      readingList.sort((x, y) => y.priority - x.priority);
+      saveState(readingList);
+    }
+    dispatch(setAnimated());
+    setTimeout(() => {
+      dispatch(resetAnimated());
+    }, 500);
+  };
+
+  const handleRemoveBook = (e) => {
+    const bookId = Number(e.target.id);
+    dispatch(removeBook(bookId));
+    let readingList = loadState();
+    readingList = readingList.filter((item) => item.bookId !== bookId);
+    saveState(readingList);
+  };
+
+  const dragStart = (e) => {
+    if (availableBook) handleAddBook(e);
+    else handleRemoveBook(e);
+  };
+
   return (
     <article className="book-card">
       <button
@@ -19,13 +53,12 @@ const BookCard = ({
         onClick={() => { setModalState(!modalState); }}
       >
         <picture>
-          <AddRemoveBookBtn
-            as="img"
+          <img
             id={id}
-            onReadList={onReadList}
+            draggable
+            onDragStart={dragStart}
             src={cover}
             alt={title}
-            availableBook={availableBook}
           />
         </picture>
         <div className="card-info">
@@ -38,11 +71,19 @@ const BookCard = ({
         availableBook={availableBook}
         sortReadingList={sortReadingList}
       />
-      <AddRemoveBookBtn
-        as="button"
+      <button
+        type="button"
         id={id}
-        onReadList={onReadList}
-      />
+        aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
+        className={`btn add-btn ${onReadList
+          ? 'add-btn--reserved'
+          : 'add-btn--not-reserved'}`}
+        onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
+      >
+        <BiSolidBookmark
+          onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
+        />
+      </button>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">
           <picture>

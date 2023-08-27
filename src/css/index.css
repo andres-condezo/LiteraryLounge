@@ -244,7 +244,7 @@ main {
   width: 100%;
   display: grid;
   gap: 4rem;
-  grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   justify-items: center;
   justify-content: start;
   align-content: start;
@@ -253,7 +253,7 @@ main {
 .book-card {
   min-height: 24rem;
   max-width: 30rem;
-  padding: 4rem 5rem;
+  padding: 2rem;
   text-align: center;
   border-radius: 1rem;
   flex: 1 1 20%;
@@ -262,9 +262,12 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  box-shadow: 0.3rem 0.3rem 1rem rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
   border: 1px dashed silver;
+  -webkit-box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
+  -moz-box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
+  box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
+  position: relative;
 }
 
 .btn-modal {
@@ -296,7 +299,7 @@ main {
 }
 
 .book-list .card-info {
-  width: 100%;
+  max-width: 20rem;
   height: 30%;
   margin-bottom: 1rem;
   display: flex;
@@ -311,19 +314,28 @@ main {
 }
 
 .add-btn {
-  font-size: 0;
-  white-space: nowrap;
-  min-width: 10rem;
-  height: 2rem;
-  border: 1px solid var(--primary-color);
-  padding: 0.6rem 3rem;
-  border-radius: 37px 37px 37px 37px;
-  transition: background-color 0.3s ease;
+  font-size: 8rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  /* white-space: nowrap; */
+  /* min-width: 10rem; */
+  /* height: 2rem; */
+  /* border: 1px solid var(--primary-color); */
+  /* padding: 0.6rem 3rem; */
+  /* border-radius: 37px 37px 37px 37px; */
+  /* transition: background-color 0.3s ease; */
+}
+
+.btn-icon {
+  z-index: 1000;
 }
 
 .add-btn--reserved {
   background-color: var(--primary-color);
   color: var(--white-color);
+  border: 1px solid var(--primary-color);
 }
 
 .add-btn:hover,
@@ -338,15 +350,15 @@ main {
   color: var(--white-color);
 }
 
-.add-btn--reserved::before {
-  content: "Unlist book";
-  font-size: initial;
-}
-
-.add-btn--not-reserved::before {
-  content: "Add to read";
-  font-size: initial;
-}
+/* .add-btn--reserved::before { */
+/*   content: "Unlist book"; */
+/*   font-size: initial; */
+/* } */
+/**/
+/* .add-btn--not-reserved::before { */
+/*   content: "Add to read"; */
+/*   font-size: initial; */
+/* } */
 
 .btn-modal--reserved {
   opacity: 0.5;
