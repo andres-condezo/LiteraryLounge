@@ -15,12 +15,10 @@ const BookListHeader = ({ filteredBookList }) => {
   return (
     <div className="book-list-header">
       <div className="title">
-        <h1>
-          Books
-        </h1>
+        <h1>Books</h1>
         <span>
-          { filteredGenre && <TbSlash />}
-          { filteredGenre && filteredGenre}
+          {filteredGenre && <TbSlash />}
+          {filteredGenre && filteredGenre}
         </span>
       </div>
       <div className="counters">
@@ -46,14 +44,16 @@ const BookListHeader = ({ filteredBookList }) => {
 };
 
 BookListHeader.propTypes = {
-  filteredBookList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    cover: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    author: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-    }).isRequired,
-  })).isRequired,
+  filteredBookList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      cover: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.shape({
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+    }),
+  ).isRequired,
 };
 
 export default BookListHeader;

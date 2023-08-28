@@ -9,9 +9,9 @@ import CardPriority from './cardPriority';
 import Modal from './modal';
 
 const BookCard = ({
-  book: {
-    id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList,
-  }, availableBook, sortReadingList,
+  book: { id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList },
+  availableBook,
+  sortReadingList,
 }) => {
   const [modalState, setModalState] = useState(false);
 
@@ -50,39 +50,28 @@ const BookCard = ({
       <button
         className={`btn-modal ${onReadList ? 'btn-modal--reserved' : ''}`}
         type="button"
-        onClick={() => { setModalState(!modalState); }}
+        onClick={() => {
+          setModalState(!modalState);
+        }}
       >
         <picture>
-          <img
-            id={id}
-            draggable
-            onDragStart={dragStart}
-            src={cover}
-            alt={title}
-          />
+          <img id={id} draggable onDragStart={dragStart} src={cover} alt={title} />
         </picture>
         <div className="card-info">
           <h4>{title}</h4>
           <p>{author.name}</p>
         </div>
       </button>
-      <CardPriority
-        id={id}
-        availableBook={availableBook}
-        sortReadingList={sortReadingList}
-      />
+      <CardPriority id={id} availableBook={availableBook} sortReadingList={sortReadingList} />
       <button
         type="button"
         id={id}
         aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-        className={`btn add-btn ${onReadList
-          ? 'add-btn--reserved'
-          : 'add-btn--not-reserved'}`}
+        className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
         onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
       >
-        <BiSolidBookmark
-          onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
-        />
+        add
+        <BiSolidBookmark onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))} />
       </button>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">

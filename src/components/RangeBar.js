@@ -32,8 +32,18 @@ const RangeBar = ({ setPagesFilterHandler }) => {
       <h5>PAGE RANGE</h5>
       <div className="box__range-slider">
         <div className="range__field">
-          <input type="number" name="field-min" value={rangeValue[0]} onChange={onChangeMinRangeBar} />
-          <input type="number" name="field-max" value={rangeValue[1]} onChange={onChangeMaxRangeBar} />
+          <input
+            type="number"
+            name="field-min"
+            value={rangeValue[0]}
+            onChange={onChangeMinRangeBar}
+          />
+          <input
+            type="number"
+            name="field-max"
+            value={rangeValue[1]}
+            onChange={onChangeMaxRangeBar}
+          />
         </div>
         <Slider
           className="range__slider1"

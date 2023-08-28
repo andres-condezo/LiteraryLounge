@@ -4,12 +4,12 @@ import { loadState } from '../logic/localStorage';
 const ReadingList = loadState();
 
 // Funciones asíncronas como consultas a la API (puede estar en cualquier otro archivo)
-export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () => (
+export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () =>
   fetch('books.json')
     .then((response) => response.json())
     .then((data) => data.library)
-    .catch((error) => error)
-));
+    .catch((error) => error),
+);
 
 // Store Slices
 const BookSlice = createSlice({
@@ -34,19 +34,18 @@ const BookSlice = createSlice({
     },
   },
   extraReducers(builder) {
-    builder
-      .addCase(fetchAllBooks.fulfilled, (state, action) => {
-        // normalize fetched data
-        const newBookList = [];
-        action.payload.forEach((book) => {
-          let isOnReadList = false;
-          const found = ReadingList.find((b) => b.bookId === book.book.id);
-          if (found) isOnReadList = true;
-          newBookList.push({ ...book.book, onReadList: isOnReadList });
-        });
-        // Add any fetched books to the array
-        return newBookList;
+    builder.addCase(fetchAllBooks.fulfilled, (state, action) => {
+      // normalize fetched data
+      const newBookList = [];
+      action.payload.forEach((book) => {
+        let isOnReadList = false;
+        const found = ReadingList.find((b) => b.bookId === book.book.id);
+        if (found) isOnReadList = true;
+        newBookList.push({ ...book.book, onReadList: isOnReadList });
       });
+      // Add any fetched books to the array
+      return newBookList;
+    });
   },
 });
 

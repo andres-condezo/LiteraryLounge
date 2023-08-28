@@ -15,9 +15,10 @@ const CardPriority = ({ id, availableBook, sortReadingList }) => {
   }, [priority]);
 
   const onClickPriorityLevel = (e, index) => {
-    const itemId = index < priority
-      ? e.target.parentNode.getAttribute('data-item')
-      : e.target.getAttribute('data-item');
+    const itemId =
+      index < priority
+        ? e.target.parentNode.getAttribute('data-item')
+        : e.target.getAttribute('data-item');
 
     setPriority(index);
     readingList = readingList.map((ele) => {

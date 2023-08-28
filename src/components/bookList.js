@@ -10,9 +10,7 @@ const BookList = ({ filters }) => {
   const bookList = useSelector((state) => state.books);
 
   useEffect(() => {
-    setFilteredBookList(
-      getFilteredBooks(filters.title, filters.genre, filters.pages),
-    );
+    setFilteredBookList(getFilteredBooks(filters.title, filters.genre, filters.pages));
   }, [bookList, filters]);
 
   const draggingOver = (e) => {
@@ -23,13 +21,8 @@ const BookList = ({ filters }) => {
     <section className="book-list">
       <BookListHeader filteredBookList={filteredBookList} />
       <div className="books-container" onDragOver={draggingOver}>
-        {filteredBookList && filteredBookList.map((book) => (
-          <BookCard
-            key={book.id}
-            book={book}
-            availableBook
-          />
-        ))}
+        {filteredBookList &&
+          filteredBookList.map((book) => <BookCard key={book.id} book={book} availableBook />)}
       </div>
     </section>
   );

@@ -7,10 +7,7 @@ const Header = () => {
     <header>
       <span>LibraryLounge</span>
       <nav>
-        <button
-          className={`btn ${isAnimated ? 'list-btn ' : ''}`}
-          type="button"
-        >
+        <button className={`btn ${isAnimated ? 'list-btn ' : ''}`} type="button">
           Reading List
         </button>
       </nav>

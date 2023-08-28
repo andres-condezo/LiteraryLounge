@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #2d1910;
   --accent-color: #daaa63;
@@ -25,18 +24,8 @@ body {
   overflow-x: hidden;
   color: var(--primary-color);
   background: var(--white-color);
-  font-family:
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    'Roboto',
-    'Oxygen',
-    'Ubuntu',
-    'Cantarell',
-    'Fira Sans',
-    'Droid Sans',
-    'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -264,9 +253,9 @@ main {
   gap: 1rem;
   transition: all 0.3s ease;
   border: 1px dashed silver;
-  -webkit-box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
-  -moz-box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
-  box-shadow: 14px 17px 9px -11px rgba(0,0,0,0.48);
+  -webkit-box-shadow: 14px 17px 9px -11px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 14px 17px 9px -11px rgba(0, 0, 0, 0.48);
+  box-shadow: 14px 17px 9px -11px rgba(0, 0, 0, 0.48);
   position: relative;
 }
 
@@ -319,12 +308,19 @@ main {
   top: 0;
   right: 0;
   z-index: 999;
+
   /* white-space: nowrap; */
+
   /* min-width: 10rem; */
+
   /* height: 2rem; */
+
   /* border: 1px solid var(--primary-color); */
+
   /* padding: 0.6rem 3rem; */
+
   /* border-radius: 37px 37px 37px 37px; */
+
   /* transition: background-color 0.3s ease; */
 }
 
@@ -351,13 +347,21 @@ main {
 }
 
 /* .add-btn--reserved::before { */
+
 /*   content: "Unlist book"; */
+
 /*   font-size: initial; */
+
 /* } */
-/**/
+
+/*  */
+
 /* .add-btn--not-reserved::before { */
+
 /*   content: "Add to read"; */
+
 /*   font-size: initial; */
+
 /* } */
 
 .btn-modal--reserved {
