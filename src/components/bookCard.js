@@ -19,7 +19,8 @@ const BookCard = ({
   const [modalState, setModalState] = useState(false);
 
   const handleAddBook = (e) => {
-    const bookId = Number(e.target.id);
+    const bookId = Number(e.id);
+    console.log('💬 :bookCard.js:handleAddBook::28: bookId', bookId);
     let readingList = loadState();
     if (!onReadList) {
       dispatch(addBook(bookId));
@@ -34,7 +35,8 @@ const BookCard = ({
   };
 
   const handleRemoveBook = (e) => {
-    const bookId = Number(e.target.id);
+    const bookId = Number(e.id);
+    console.log('💬 :bookCard.js::handleRemoveBook:47: bookId', bookId);
     dispatch(removeBook(bookId));
     let readingList = loadState();
     readingList = readingList.filter((item) => item.bookId !== bookId);
@@ -69,10 +71,15 @@ const BookCard = ({
         id={id}
         aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
         className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
-        onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
+        onClick={(e) => (onReadList ? handleRemoveBook(e.target) : handleAddBook(e.target))}
       >
-        add
-        <BiSolidBookmark onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))} />
+        <BiSolidBookmark
+          id={id}
+          className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
+          onClick={(e) => (onReadList
+            ? handleRemoveBook(e.target.parentNode)
+            : handleAddBook(e.target.parentNode))}
+        />
       </button>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">
