@@ -24,8 +24,8 @@ const BookReadingList = () => {
     <aside className="aside__readinglist">
       <h3>READING LIST</h3>
       <div className="aside__readinglist-box" onDragOver={draggingOver}>
-        {readingList &&
-          readingList.map((book) => (
+        {readingList
+          && readingList.map((book) => (
             <BookCard
               key={book.id}
               book={book}

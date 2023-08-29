@@ -6,7 +6,9 @@ import { loadState, saveState } from '../logic/localStorage';
 import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
 // import FavIcon from '../assets/icons';
 
-const AddRemoveBookBtn = ({ as, id, onReadList, type, src, alt, availableBook }) => {
+const AddRemoveBookBtn = ({
+  as, id, onReadList, type, src, alt, availableBook,
+}) => {
   const Component = as || 'button';
   let btnClass = '';
   let ariaLabel = '';

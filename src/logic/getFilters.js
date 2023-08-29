@@ -8,24 +8,24 @@ const getFilteredBooks = (title, genre, pages) => {
   if (title === '' && genre === '' && !existRange) return books;
 
   const filteredList = books.filter((book) => {
-    if (title !== '' && genre !== '' && existRange)
+    if (title !== '' && genre !== '' && existRange) {
       return (
-        book.title.toLowerCase().includes(title) &&
-        book.genre === genre &&
-        book.pages >= pages[0] &&
-        book.pages <= pages[1]
+        book.title.toLowerCase().includes(title)
+        && book.genre === genre
+        && book.pages >= pages[0]
+        && book.pages <= pages[1]
       );
+    }
 
-    if (title !== '' && genre !== '')
-      return book.title.toLowerCase().includes(title) && book.genre === genre;
+    if (title !== '' && genre !== '') return book.title.toLowerCase().includes(title) && book.genre === genre;
 
-    if (title !== '' && existRange)
+    if (title !== '' && existRange) {
       return (
         book.title.toLowerCase().includes(title) && book.pages >= pages[0] && book.pages <= pages[1]
       );
+    }
 
-    if (genre !== '' && existRange)
-      return book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1];
+    if (genre !== '' && existRange) return book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1];
 
     if (title !== '') return book.title.toLowerCase().includes(title);
 

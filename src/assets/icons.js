@@ -4,7 +4,8 @@ export const FavIcon = () => {
     <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" />
     <g id="SVGRepo_iconCarrier">
       {' '}
-      <title>bookmark_fill</title>{' '}
+      <title>bookmark_fill</title>
+      {' '}
       <g id="页面-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         {' '}
         <g id="Education" transform="translate(-96.000000, -48.000000)" fillRule="nonzero">
@@ -20,8 +21,10 @@ export const FavIcon = () => {
               id="路径"
               fill="#09244B"
             />
-          </g>{' '}
-        </g>{' '}
+          </g>
+          {' '}
+        </g>
+        {' '}
       </g>
     </g>
   </svg>;

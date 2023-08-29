@@ -22,8 +22,8 @@ const SelectFilter = ({ setGenreFilterHandler }) => {
       <div className="box__filter">
         <h5>GENRES</h5>
         <ul>
-          {genresArr &&
-            genresArr.map(({ value, text }) => (
+          {genresArr
+            && genresArr.map(({ value, text }) => (
               <li key={text}>
                 <button
                   type="button"

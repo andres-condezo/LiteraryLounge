@@ -21,8 +21,8 @@ const BookList = ({ filters }) => {
     <section className="book-list">
       <BookListHeader filteredBookList={filteredBookList} />
       <div className="books-container" onDragOver={draggingOver}>
-        {filteredBookList &&
-          filteredBookList.map((book) => <BookCard key={book.id} book={book} availableBook />)}
+        {filteredBookList
+          && filteredBookList.map((book) => <BookCard key={book.id} book={book} availableBook />)}
       </div>
     </section>
   );

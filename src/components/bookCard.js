@@ -9,13 +9,14 @@ import CardPriority from './cardPriority';
 import Modal from './modal';
 
 const BookCard = ({
-  book: { id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList },
+  book: {
+    id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList,
+  },
   availableBook,
   sortReadingList,
 }) => {
-  const [modalState, setModalState] = useState(false);
-
   const dispatch = useDispatch();
+  const [modalState, setModalState] = useState(false);
 
   const handleAddBook = (e) => {
     const bookId = Number(e.target.id);

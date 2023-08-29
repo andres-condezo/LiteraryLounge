@@ -4,12 +4,10 @@ import { loadState } from '../logic/localStorage';
 const ReadingList = loadState();
 
 // Funciones asíncronas como consultas a la API (puede estar en cualquier otro archivo)
-export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () =>
-  fetch('books.json')
-    .then((response) => response.json())
-    .then((data) => data.library)
-    .catch((error) => error),
-);
+export const fetchAllBooks = createAsyncThunk('books/fetchAllBooks', () => fetch('books.json')
+  .then((response) => response.json())
+  .then((data) => data.library)
+  .catch((error) => error));
 
 // Store Slices
 const BookSlice = createSlice({
