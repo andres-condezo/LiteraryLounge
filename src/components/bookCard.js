@@ -66,13 +66,7 @@ const BookCard = ({
         </div>
       </button>
       <CardPriority id={id} availableBook={availableBook} sortReadingList={sortReadingList} />
-      <button
-        type="button"
-        id={id}
-        aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-        className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
-        onClick={(e) => (onReadList ? handleRemoveBook(e.target) : handleAddBook(e.target))}
-      >
+      <div className={`add-btn-bg ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}>
         <BiSolidBookmark
           id={id}
           className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
@@ -80,7 +74,7 @@ const BookCard = ({
             ? handleRemoveBook(e.target.parentNode)
             : handleAddBook(e.target.parentNode))}
         />
-      </button>
+      </div>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">
           <picture>

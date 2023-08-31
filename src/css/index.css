@@ -324,6 +324,19 @@ main {
   /* transition: background-color 0.3s ease; */
 }
 
+.add-btn-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: var(--white-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .btn-icon {
   z-index: 1000;
 }
