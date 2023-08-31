@@ -66,14 +66,19 @@ const BookCard = ({
         </div>
       </button>
       <CardPriority id={id} availableBook={availableBook} sortReadingList={sortReadingList} />
-      <div className={`add-btn-bg ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}>
-        <BiSolidBookmark
-          id={id}
-          className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
-          onClick={(e) => (onReadList
-            ? handleRemoveBook(e.target.parentNode)
-            : handleAddBook(e.target.parentNode))}
-        />
+      <BiSolidBookmark
+        id={id}
+        className={`add-btn ${onReadList ? 'add-btn--reserved' : ''}`}
+        onClick={(e) => (onReadList
+          ? handleRemoveBook(e.target.parentNode)
+          : handleAddBook(e.target.parentNode))}
+      />
+      <div className="card-footer">
+        <p>{genre}</p>
+        <div>
+          <span>Pag: </span>
+          <span>{pages}</span>
+        </div>
       </div>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">

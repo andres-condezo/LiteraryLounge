@@ -302,79 +302,67 @@ main {
   font-size: 1.5rem;
 }
 
-.add-btn {
-  font-size: 8rem;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 999;
-
-  /* white-space: nowrap; */
-
-  /* min-width: 10rem; */
-
-  /* height: 2rem; */
-
-  /* border: 1px solid var(--primary-color); */
-
-  /* padding: 0.6rem 3rem; */
-
-  /* border-radius: 37px 37px 37px 37px; */
-
-  /* transition: background-color 0.3s ease; */
-}
-
 .add-btn-bg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 10rem;
-  height: 10rem;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
+  border: 1px solid var(--primary-color);
   background-color: var(--white-color);
+  opacity: 80%;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-.btn-icon {
-  z-index: 1000;
+.add-btn {
+  font-size: 6rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
 }
 
-.add-btn--reserved {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: 1px solid var(--primary-color);
+.add-btn path {
+  stroke-width: 1;
+  stroke: var(--primary-color);
+  fill: var(--white-color);
+  opacity: 50%;
 }
 
-.add-btn:hover,
-.add-btn--reserved:hover {
-  background-color: var(--brown-color);
-  color: var(--white-color);
+.add-btn--reserved path {
+  fill: var(--primary-color);
+  opacity: 1;
 }
 
-.add-btn:active,
-.add-btn--reserved:active {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+/* .add-btn--reserved:hover { */
+/*   background-color: var(--brown-color); */
+/*   color: var(--white-color); */
+/* } */
+/**/
+/* .add-btn--reserved:active { */
+/*   background-color: var(--primary-color); */
+/*   color: var(--white-color); */
+/* } */
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4rem;
 }
 
 /* .add-btn--reserved::before { */
-
 /*   content: "Unlist book"; */
-
 /*   font-size: initial; */
-
 /* } */
 
-/*  */
-
 /* .add-btn--not-reserved::before { */
-
 /*   content: "Add to read"; */
-
 /*   font-size: initial; */
-
 /* } */
 
 .btn-modal--reserved {
