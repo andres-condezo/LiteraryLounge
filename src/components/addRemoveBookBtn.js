@@ -1,10 +1,8 @@
 import { PropTypes } from 'prop-types';
 import { useDispatch } from 'react-redux';
-// import { BiSolidBookmark } from 'react-icons/bi';
 import { addBook, removeBook } from '../redux/booksSlice';
 import { loadState, saveState } from '../logic/localStorage';
 import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
-// import FavIcon from '../assets/icons';
 
 const AddRemoveBookBtn = ({
   as, id, onReadList, type, src, alt, availableBook,
@@ -49,8 +47,6 @@ const AddRemoveBookBtn = ({
     else handleRemoveBook(e);
   };
 
-  console.log('availableBook', availableBook);
-
   const handleClick = (e) => {
     if (onReadList) handleRemoveBook(e);
     else handleAddBook(e);
@@ -69,9 +65,7 @@ const AddRemoveBookBtn = ({
       draggable
       src={src}
       alt={alt}
-    >
-      add
-    </Component>
+    />
   );
 };
 

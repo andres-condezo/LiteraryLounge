@@ -323,6 +323,18 @@ main {
 }
 
 .btn-icon path {
+  right: 0;
+}
+
+.add-btn {
+  font-size: 6rem;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.add-btn path {
   stroke-width: 1;
   stroke: var(--primary-color);
   fill: var(--white-color);
@@ -343,7 +355,7 @@ main {
 /*   background-color: var(--brown-color); */
 /*   color: var(--white-color); */
 /* } */
-/**/
+
 /* .add-btn:active, */
 /* .add-btn--reserved:active { */
 /*   background-color: var(--primary-color); */
@@ -359,21 +371,13 @@ main {
 }
 
 /* .add-btn--reserved::before { */
-
 /*   content: "Unlist book"; */
-
 /*   font-size: initial; */
-
 /* } */
 
-/*  */
-
 /* .add-btn--not-reserved::before { */
-
 /*   content: "Add to read"; */
-
 /*   font-size: initial; */
-
 /* } */
 
 .btn-modal--reserved {
