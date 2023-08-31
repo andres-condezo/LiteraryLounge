@@ -68,12 +68,19 @@ const BookCard = ({
         type="button"
         id={id}
         aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-        className={`btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`}
+        className="add-btn"
         onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
-      >
-        add
-        <BiSolidBookmark onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))} />
-      </button>
+      />
+      <BiSolidBookmark
+        className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
+      />
+      <div className="card-footer">
+        <p>{genre}</p>
+        <div>
+          <span>Pag: </span>
+          <span>{pages}</span>
+        </div>
+      </div>
       <Modal modalState={modalState} setModalState={setModalState}>
         <div className="modal__main">
           <picture>

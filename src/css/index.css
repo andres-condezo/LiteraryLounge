@@ -303,47 +303,59 @@ main {
 }
 
 .add-btn {
-  font-size: 8rem;
   position: absolute;
+  width: 5rem;
+  height: 5rem;
   top: 0;
-  right: 0;
-  z-index: 999;
-
-  /* white-space: nowrap; */
-
-  /* min-width: 10rem; */
-
-  /* height: 2rem; */
-
-  /* border: 1px solid var(--primary-color); */
-
-  /* padding: 0.6rem 3rem; */
-
-  /* border-radius: 37px 37px 37px 37px; */
-
-  /* transition: background-color 0.3s ease; */
+  right: 4px;
+  z-index: 3;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0;
 }
 
 .btn-icon {
-  z-index: 1000;
+  font-size: 6rem;
+  position: absolute;
+  top: -4px;
+  right: 0;
+  z-index: 2;
 }
 
-.add-btn--reserved {
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  border: 1px solid var(--primary-color);
+.btn-icon path {
+  stroke-width: 1;
+  stroke: var(--primary-color);
+  fill: var(--white-color);
+  opacity: 50%;
 }
 
-.add-btn:hover,
-.add-btn--reserved:hover {
-  background-color: var(--brown-color);
-  color: var(--white-color);
+.btn-icon--reserved path {
+  fill: var(--primary-color);
+  opacity: 1;
 }
 
-.add-btn:active,
-.add-btn--reserved:active {
-  background-color: var(--primary-color);
-  color: var(--white-color);
+.btn-icon path:hover {
+  fill: var(--accent-color);
+}
+
+/* .add-btn:hover, */
+/* .add-btn--reserved:hover { */
+/*   background-color: var(--brown-color); */
+/*   color: var(--white-color); */
+/* } */
+/**/
+/* .add-btn:active, */
+/* .add-btn--reserved:active { */
+/*   background-color: var(--primary-color); */
+/*   color: var(--white-color); */
+/* } */
+
+.card-footer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.4rem;
 }
 
 /* .add-btn--reserved::before { */
