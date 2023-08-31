@@ -19,8 +19,8 @@ const BookCard = ({
   const [modalState, setModalState] = useState(false);
 
   const handleAddBook = (e) => {
-    const bookId = Number(e.id);
-    console.log('💬 :bookCard.js:handleAddBook::28: bookId', bookId);
+    const bookId = Number(e.target.id);
+    console.log('💬 :bookCard.js:::23: bookId', bookId);
     let readingList = loadState();
     if (!onReadList) {
       dispatch(addBook(bookId));
@@ -35,8 +35,8 @@ const BookCard = ({
   };
 
   const handleRemoveBook = (e) => {
-    const bookId = Number(e.id);
-    console.log('💬 :bookCard.js::handleRemoveBook:47: bookId', bookId);
+    const bookId = Number(e.target.id);
+    console.log('💬 :bookCard.js:::39: bookId', bookId);
     dispatch(removeBook(bookId));
     let readingList = loadState();
     readingList = readingList.filter((item) => item.bookId !== bookId);
@@ -66,7 +66,8 @@ const BookCard = ({
         </div>
       </button>
       <CardPriority id={id} availableBook={availableBook} sortReadingList={sortReadingList} />
-      <BiSolidBookmark
+      <button
+        type="button"
         id={id}
         aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
         className="add-btn"

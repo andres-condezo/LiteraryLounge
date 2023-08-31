@@ -323,18 +323,6 @@ main {
 }
 
 .btn-icon path {
-  right: 0;
-}
-
-.add-btn {
-  font-size: 6rem;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-
-.add-btn path {
   stroke-width: 1;
   stroke: var(--primary-color);
   fill: var(--white-color);
