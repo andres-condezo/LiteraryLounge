@@ -1,51 +1,33 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { BiSolidBookmark } from 'react-icons/bi';
-import { loadState, saveState } from '../logic/localStorage';
-import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
-import { addBook, removeBook } from '../redux/booksSlice';
 import CardPriority from './cardPriority';
+import useBook from '../hooks/useBook';
 import Modal from './modal';
 
 const BookCard = ({
   book: {
-    id, cover, title, author, synopsis, year, pages, genre, ISBN, onReadList,
+    id,
+    cover,
+    title,
+    author,
+    synopsis,
+    year,
+    pages,
+    genre,
+    ISBN,
+    onReadList,
   },
   availableBook,
   sortReadingList,
 }) => {
-  const dispatch = useDispatch();
   const [modalState, setModalState] = useState(false);
-
-  const handleAddBook = (e) => {
-    const bookId = Number(e.target.id);
-    console.log('💬 :bookCard.js:::23: bookId', bookId);
-    let readingList = loadState();
-    if (!onReadList) {
-      dispatch(addBook(bookId));
-      readingList = [...readingList, { bookId, priority: 1 }];
-      readingList.sort((x, y) => y.priority - x.priority);
-      saveState(readingList);
-    }
-    dispatch(setAnimated());
-    setTimeout(() => {
-      dispatch(resetAnimated());
-    }, 500);
-  };
-
-  const handleRemoveBook = (e) => {
-    const bookId = Number(e.target.id);
-    console.log('💬 :bookCard.js:::39: bookId', bookId);
-    dispatch(removeBook(bookId));
-    let readingList = loadState();
-    readingList = readingList.filter((item) => item.bookId !== bookId);
-    saveState(readingList);
-  };
+  const { handleAddBook, handleRemoveBook } = useBook(onReadList);
 
   const dragStart = (e) => {
-    if (availableBook) handleAddBook(e);
-    else handleRemoveBook(e);
+    const bookId = e.target.id;
+    if (availableBook) handleAddBook(bookId);
+    else handleRemoveBook(bookId);
   };
 
   return (
@@ -58,28 +40,37 @@ const BookCard = ({
         }}
       >
         <picture>
-          <img id={id} draggable onDragStart={dragStart} src={cover} alt={title} />
+          <img
+            id={id}
+            draggable
+            onDragStart={dragStart}
+            src={cover}
+            alt={title}
+          />
         </picture>
         <div className="card-info">
           <h4>{title}</h4>
           <p>{author.name}</p>
         </div>
       </button>
-      <CardPriority id={id} availableBook={availableBook} sortReadingList={sortReadingList} />
-      <button
+      <CardPriority
+        id={id}
+        availableBook={availableBook}
+        sortReadingList={sortReadingList}
+      />
+      <BiSolidBookmark
         type="button"
         id={id}
         aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-        className="add-btn"
-        onClick={(e) => (onReadList ? handleRemoveBook(e) : handleAddBook(e))}
-      />
-      <BiSolidBookmark
         className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
+        onClick={(e) => (onReadList
+          ? handleRemoveBook(e.target.parentNode.id)
+          : handleAddBook(e.target.parentNode.id))}
       />
       <div className="card-footer">
         <p>{genre}</p>
         <div>
-          <span>Pag: </span>
+          <span>Pag:&nbsp;</span>
           <span>{pages}</span>
         </div>
       </div>

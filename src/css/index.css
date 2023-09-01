@@ -302,27 +302,15 @@ main {
   font-size: 1.5rem;
 }
 
-.add-btn {
-  position: absolute;
-  width: 5rem;
-  height: 5rem;
-  top: 0;
-  right: 4px;
-  z-index: 3;
-  cursor: pointer;
-  border-radius: 50%;
-  opacity: 0;
-}
-
 .btn-icon {
   font-size: 6rem;
   position: absolute;
   top: -4px;
   right: 0;
-  z-index: 2;
 }
 
 .btn-icon path {
+  cursor: pointer;
   stroke-width: 1;
   stroke: var(--primary-color);
   fill: var(--white-color);
@@ -338,17 +326,10 @@ main {
   fill: var(--accent-color);
 }
 
-/* .add-btn:hover, */
-/* .add-btn--reserved:hover { */
-/*   background-color: var(--brown-color); */
-/*   color: var(--white-color); */
-/* } */
-
-/* .add-btn:active, */
-/* .add-btn--reserved:active { */
-/*   background-color: var(--primary-color); */
-/*   color: var(--white-color); */
-/* } */
+.btn-icon path:active,
+.btn-icon--reserved path:active {
+  fill: var(--primary-color);
+}
 
 .card-footer {
   width: 100%;
