@@ -30,7 +30,9 @@ const Modal = ({ children, modalState, setModalState }) => {
                 X
               </button>
             </div>
-            {children}
+            <div className="modal__main">
+              {children}
+            </div>
           </div>
         </div>
       )}

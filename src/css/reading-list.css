@@ -1,3 +1,10 @@
+.aside__readinglist {
+  max-height: 100vh;
+  padding: 4rem;
+  margin-left: 2rem;
+  border-left: 1px dashed var(--primary-color);
+}
+
 .aside__readinglist-box {
   width: 100%;
   padding: 1rem;
@@ -5,6 +12,15 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+}
+
+.aside__readinglist-box .btn-modal--reserved {
+  opacity: 1;
+}
+
+.aside__readinglist-box .card-info,
+.aside__readinglist-box .card-footer {
+  display: none;
 }
 
 .aside__readinglist-box article,
@@ -22,7 +38,7 @@
 
 .priority--display svg {
   stroke-width: 1;
-  stroke: red;
+  stroke: var(--primary-color);
 }
 
 .priority--empty {
@@ -30,5 +46,5 @@
 }
 
 .priority--fill {
-  fill: red;
+  fill: var(--primary-color);
 }

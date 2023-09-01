@@ -3,47 +3,38 @@ import Modal from './modal';
 
 const ModalBook = ({
   book: {
-    cover,
-    title,
-    author,
-    synopsis,
-    year,
-    pages,
-    genre,
-    ISBN,
+    cover, title, author, synopsis, year, pages, genre, ISBN,
   },
   modalState,
   setModalState,
 }) => (
   <Modal modalState={modalState} setModalState={setModalState}>
-    <div className="modal__main">
-      <picture>
-        <img src={cover} alt={title} />
-      </picture>
-      <div className="modal__info">
-        <h4>{title}</h4>
-        <h5>{author.name}</h5>
-        <p>
-          <b>Genre:&nbsp;</b>
-          {genre}
-        </p>
-        <p>
-          <b>Year:&nbsp;</b>
-          {year}
-        </p>
-        <p>
-          <b>Pages:&nbsp;</b>
-          {pages}
-        </p>
-        <p>
-          <b>ISBN:&nbsp;</b>
-          {ISBN}
-        </p>
-        <p className="modal__info--p">
-          <b>Synopsis:&nbsp;</b>
-          {synopsis}
-        </p>
-      </div>
+    <picture>
+      <img src={cover} alt={title} />
+    </picture>
+    <div className="modal__info">
+      <h4>{title}</h4>
+      <h5>{author.name}</h5>
+      <p>
+        Genre:&nbsp;
+        {genre}
+      </p>
+      <p>
+        Year:&nbsp;
+        {year}
+      </p>
+      <p>
+        Pages:&nbsp;
+        {pages}
+      </p>
+      <p>
+        ISBN:&nbsp;
+        {ISBN}
+      </p>
+      <p className="modal__info--p">
+        <b>Synopsis:&nbsp;</b>
+        {synopsis}
+      </p>
     </div>
   </Modal>
 );

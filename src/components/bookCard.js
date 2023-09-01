@@ -41,6 +41,13 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
             <h4>{title}</h4>
             <p>{author.name}</p>
           </div>
+          <div className="card-footer">
+            <p>{genre}</p>
+            <div>
+              <span>Pag:&nbsp;</span>
+              <span>{pages}</span>
+            </div>
+          </div>
         </button>
         <CardPriority
           id={id}
@@ -56,13 +63,6 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
             ? handleRemoveBook(e.target.parentNode.id)
             : handleAddBook(e.target.parentNode.id))}
         />
-        <div className="card-footer">
-          <p>{genre}</p>
-          <div>
-            <span>Pag:&nbsp;</span>
-            <span>{pages}</span>
-          </div>
-        </div>
       </article>
       <BookModal
         book={book}
