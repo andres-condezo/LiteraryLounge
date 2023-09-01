@@ -24,8 +24,18 @@ body {
   overflow-x: hidden;
   color: var(--primary-color);
   background: var(--white-color);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    "Roboto",
+    "Oxygen",
+    "Ubuntu",
+    "Cantarell",
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -338,16 +348,6 @@ main {
   justify-content: space-between;
   font-size: 1.4rem;
 }
-
-/* .add-btn--reserved::before { */
-/*   content: "Unlist book"; */
-/*   font-size: initial; */
-/* } */
-
-/* .add-btn--not-reserved::before { */
-/*   content: "Add to read"; */
-/*   font-size: initial; */
-/* } */
 
 .btn-modal--reserved {
   opacity: 0.5;
