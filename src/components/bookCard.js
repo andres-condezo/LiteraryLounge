@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { BiSolidBookmark } from 'react-icons/bi';
 import CardPriority from './cardPriority';
 import useBook from '../hooks/useBook';
-import Modal from './modal';
+import BookModal from './bookModal';
 
 const BookCard = ({
   book: {
@@ -74,37 +74,20 @@ const BookCard = ({
           <span>{pages}</span>
         </div>
       </div>
-      <Modal modalState={modalState} setModalState={setModalState}>
-        <div className="modal__main">
-          <picture>
-            <img src={cover} alt={title} />
-          </picture>
-          <div className="modal__info">
-            <h4>{title}</h4>
-            <h5>{author.name}</h5>
-            <p>
-              <b>Genre:&nbsp;</b>
-              {genre}
-            </p>
-            <p>
-              <b>Year:&nbsp;</b>
-              {year}
-            </p>
-            <p>
-              <b>Pages:&nbsp;</b>
-              {pages}
-            </p>
-            <p>
-              <b>ISBN:&nbsp;</b>
-              {ISBN}
-            </p>
-            <p className="modal__info--p">
-              <b>Synopsis:&nbsp;</b>
-              {synopsis}
-            </p>
-          </div>
-        </div>
-      </Modal>
+      <BookModal
+        book={{
+          cover,
+          title,
+          author,
+          synopsis,
+          year,
+          pages,
+          genre,
+          ISBN,
+        }}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </article>
   );
 };
