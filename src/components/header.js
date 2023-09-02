@@ -5,7 +5,10 @@ const Header = () => {
 
   return (
     <header>
-      <span>LibraryLounge</span>
+      <span>
+        <b>Literary</b>
+        Lounge
+      </span>
       <nav>
         <button className={`btn ${isAnimated ? 'list-btn ' : ''}`} type="button">
           Reading List

@@ -1,8 +1,9 @@
 .aside__readinglist {
-  max-height: 100vh;
+  min-height: 100vh;
   padding: 4rem;
   margin-left: 2rem;
   border-left: 1px dashed var(--primary-color);
+  overflow-y: auto;
 }
 
 .aside__readinglist-box {

@@ -1,37 +1,38 @@
 .box__range-slider {
   background-color: var(--bg-color);
-  padding: 2rem 2rem 4rem 2rem;
+  padding: 1rem 1rem 2rem 1rem;
 }
 
 .range__field {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   width: 100%;
   display: flex;
   justify-content: space-around;
-  gap: 2rem;
-  margin-bottom: 2rem;
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
 .range__field input {
   all: unset;
-  width: 6rem;
+  width: 3.4rem;
   height: 1rem;
-  padding: 1rem;
+  padding: 0.5rem;
+  margin-bottom: 0.4rem;
   background-color: var(--white-color);
-  border-radius: 6px;
+  border-radius: 5px;
   border: 1px solid var(--primary-color);
 }
 
 .range__slider1 {
   width: 100%;
-  height: 5px;
+  height: 0.3rem;
   border-radius: 5px;
   background: gray;
 }
 
 .range__slider1 .thumb {
-  width: 15px;
-  height: 15px;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   border: 1px solid var(--white-color);
   background: var(--primary-color);
@@ -41,7 +42,7 @@
 }
 
 .track-1 {
-  height: 5px;
+  height: 0.3rem;
   background: var(--primary-color);
   border-radius: 5px;
 }

@@ -20,7 +20,7 @@ const SelectFilter = ({ setGenreFilterHandler }) => {
   return (
     <>
       <div className="box__filter">
-        <h5>GENRES</h5>
+        <h5>Genres</h5>
         <ul>
           {genresArr
             && genresArr.map(({ value, text }) => (

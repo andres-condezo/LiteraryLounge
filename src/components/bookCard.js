@@ -7,7 +7,7 @@ import BookModal from './bookModal';
 
 const BookCard = ({ book, availableBook, sortReadingList }) => {
   const {
-    id, cover, title, author, pages, genre, onReadList,
+    id, cover, title, author, onReadList,
   } = book;
   const [modalState, setModalState] = useState(false);
   const { handleAddBook, handleRemoveBook } = useBook(onReadList);
@@ -39,15 +39,8 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
           </picture>
           <div className="card-info">
             <h4>{title}</h4>
-            <p>{author.name}</p>
           </div>
-          <div className="card-footer">
-            <p>{genre}</p>
-            <div>
-              <span>Pag:&nbsp;</span>
-              <span>{pages}</span>
-            </div>
-          </div>
+          <div className="card-footer">{author.name}</div>
         </button>
         <CardPriority
           id={id}
@@ -85,8 +78,6 @@ BookCard.propTypes = {
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
-    pages: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
     onReadList: PropTypes.bool.isRequired,
   }).isRequired,
   availableBook: PropTypes.bool.isRequired,
