@@ -7,6 +7,7 @@ import '../css/reading-list.css';
 const BookReadingList = () => {
   const [readingList, setReadingList] = useState([]);
   const bookList = useSelector((state) => state.books);
+  const isOpened = useSelector((state) => state.listAside.isOpened);
 
   useEffect(() => {
     setReadingList(getReadingBooks());
@@ -21,20 +22,24 @@ const BookReadingList = () => {
   };
 
   return (
-    <aside className="aside__readinglist">
-      <h3>READING LIST</h3>
-      <div className="aside__readinglist-box" onDragOver={draggingOver}>
-        {readingList
-          && readingList.map((book) => (
-            <BookCard
-              key={book.id}
-              book={book}
-              availableBook={false}
-              sortReadingList={sortReadingList}
-            />
-          ))}
-      </div>
-    </aside>
+    <>
+      {isOpened && (
+        <aside className="aside__readinglist">
+          <h3>READING LIST</h3>
+          <div className="aside__readinglist-box" onDragOver={draggingOver}>
+            {readingList
+              && readingList.map((book) => (
+                <BookCard
+                  key={book.id}
+                  book={book}
+                  availableBook={false}
+                  sortReadingList={sortReadingList}
+                />
+              ))}
+          </div>
+        </aside>
+      )}
+    </>
   );
 };
 
