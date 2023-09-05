@@ -3,11 +3,11 @@
   padding-left: 3rem;
   border-bottom: 1px dashed #f8f3ed;
   height: calc(100vh - 12rem);
- }
+}
 
 .aside__readinglist-box {
   height: calc(100vh - 12rem);
-  background-color:  #2d1910;
+  background-color: #2d1910;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 3rem 3rem 3rem 0;

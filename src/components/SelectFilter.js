@@ -20,23 +20,27 @@ const SelectFilter = ({ setGenreFilterHandler }) => {
   return (
     <>
       <div className="box__filter">
-        <h2>Genres</h2>
-        <ul>
-          {genresArr
-            && genresArr.map(({ value, text }) => (
-              <li key={text}>
-                <button
-                  type="button"
-                  className={`select-btn
+        <details open>
+          <summary>
+            <h2>Genres</h2>
+          </summary>
+          <ul>
+            {genresArr
+              && genresArr.map(({ value, text }) => (
+                <li key={text}>
+                  <button
+                    type="button"
+                    className={`select-btn
                   ${genre === value ? 'select-btn--pressed' : ''}`}
-                  value={value}
-                  onClick={onChangeSelectFilter}
-                >
-                  {text}
-                </button>
-              </li>
-            ))}
-        </ul>
+                    value={value}
+                    onClick={onChangeSelectFilter}
+                  >
+                    {text}
+                  </button>
+                </li>
+              ))}
+          </ul>
+        </details>
       </div>
     </>
   );
