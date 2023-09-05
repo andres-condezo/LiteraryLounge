@@ -39,8 +39,8 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
           </picture>
           <div className="card-info">
             <h4>{title}</h4>
+            <p>{author.name}</p>
           </div>
-          <div className="card-footer">{author.name}</div>
         </button>
         <CardPriority
           id={id}

@@ -9,9 +9,7 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const handleMenuState = () => {
-    console.log('💬:header.js:handleMenuState:12:', 'isOpened: ', isOpened);
     dispatch(setListState());
-    console.log('💬:header.js:handleMenuState:14:', 'isOpened: ', isOpened);
   };
 
   return (

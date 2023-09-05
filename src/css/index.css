@@ -18,8 +18,29 @@ html {
   font-size: 10px;
 }
 
-body {
+h1, h2, h3, h4, h5, h6 {
+  all: unset;
+  font-weight: 600;
+}
+
+.section-header {
   font-size: 2rem;
+  padding: 2.5rem 0;
+  margin-bottom: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--grey-color);
+}
+
+.btn {
+  all: unset;
+  cursor: pointer;
+}
+
+
+body {
+  font-size: 1.4rem;
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--primary-color);
@@ -40,15 +61,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.btn {
-  all: unset;
-  cursor: pointer;
-}
-
 header {
   width: 100%;
   height: 6rem;
-  padding: 1rem 5%;
+  padding: 2rem 4%;
   background-color: var(--accent-color);
   position: fixed;
   top: 0;
@@ -78,38 +94,33 @@ header span b {
 main {
   width: 100%;
   min-height: calc(100vh - 11rem);
-  padding: 2rem 5%;
-  margin-top: 4rem;
+  padding: 2rem 4%;
+  margin-top: 5.6rem;
   background-color: var(--white-color);
   display: flex;
   flex-direction: row;
 }
 
 .aside__filter {
-  /* min-width: 12%; */
-  padding-top: 2rem;
-  padding-right: 2rem;
+  width: 15rem;
+  padding-right: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   border-right: 1px dashed var(--primary-color);
 }
 
 .aside__filter h3 {
-  font-size: 2.4rem;
   font-weight: 600;
   margin-bottom: 1rem;
 }
 
 .browser h3 {
-  font-size: 1.6rem;
   margin-bottom: 1rem;
 }
 
 .browser input {
   width: 100%;
   padding: 0.5rem 0.8rem;
-  font-size: 1rem;
   color: var(--primary-color);
   background-color: var(--white-color);
   border-radius: 5px;
@@ -120,7 +131,6 @@ main {
   background-color: red;
   color: white;
   font-weight: bold;
-  font-size: 12px;
   line-height: 1;
   border: none;
   border-radius: 50%;
@@ -139,7 +149,6 @@ main {
 .aside__filter .filters .box__filter h5 {
   width: 100%;
   height: 3rem;
-  font-size: 1.6rem;
   margin-bottom: 1rem;
   background-color: var(--bg-color);
   padding: 0 1rem;
@@ -151,7 +160,6 @@ main {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color);
-  font-size: 1.4rem;
   font-weight: 400;
 }
 
@@ -161,10 +169,6 @@ main {
   list-style: none;
   cursor: pointer;
   padding: 0 1rem;
-}
-
---show {
-  display: block;
 }
 
 .select-btn {
@@ -184,34 +188,22 @@ main {
 }
 
 .book-list {
-  padding: 0 1rem;
+  padding: 0 3rem 3rem 3rem;
   width: 100%;
-  font-size: 2rem;
 }
 
-.book-list .book-list-header {
-  padding: 2rem 2rem 4rem 2rem;
-  margin-bottom: 4rem;
+.book-list-header {
   border-bottom: 1px dashed var(--grey-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .book-list-header .title {
-  font-size: 2.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.book-list-header .title h1 {
-  font-size: 3.4rem;
 }
 
 .book-list-header .title span {
   margin: 0 1rem;
-  font-size: 2.8rem;
   font-weight: 300;
   color: var(--grey-color);
   display: flex;
@@ -225,13 +217,12 @@ main {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem;
   font-weight: 300;
 }
 
 .counters p,
 .counters div.tip {
-  margin-right: 2rem;
+  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -252,7 +243,6 @@ main {
   color: var(--prmary-color);
   background-color: var(--white-color);
   padding: 0.5rem 1.5rem;
-  font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
   border: 1px dashed var(--primary-color);
@@ -281,14 +271,8 @@ main {
   min-height: 10rem;
   max-width: 20rem;
   padding: 1.2rem;
-  font-size: 1.2rem;
   text-align: center;
   border-radius: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.4rem;
   transition: all 0.3s ease;
   border: 1px dashed silver;
   -webkit-box-shadow: 14px 17px 9px -11px rgba(0, 0, 0, 0.48);
@@ -299,11 +283,11 @@ main {
 
 .btn-modal {
   all: unset;
+  height: 100%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
   transition: all 0.3s ease;
 }
 
@@ -327,22 +311,20 @@ main {
 }
 
 .book-list .card-info {
-  max-width: 20rem;
+  width: 90%;
   height: 30%;
-  margin-bottom: 1rem;
+  margin-top: 1.6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
 .card-info p {
-  font-size: 1.5rem;
 }
 
 .btn-icon {
-  font-size: 4rem;
   position: absolute;
   top: -4px;
   right: 0;
@@ -378,7 +360,6 @@ main {
   text-align: center;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
 }
 
 .btn-modal--reserved {
@@ -395,17 +376,15 @@ footer {
   color: var(--white-color);
   background-color: var(--primary-color);
   text-align: center;
-  font-size: 1.4rem;
   width: 100%;
   height: 3rem;
-  padding: 4rem 5% 8rem 5%;
+  padding: 3rem 4% 8rem 4%;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
 footer .logo {
-  font-size: 1.8rem;
 }
 
 .list-btn-animation {
