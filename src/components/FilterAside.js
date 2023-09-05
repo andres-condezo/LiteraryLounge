@@ -23,10 +23,7 @@ const FilterAside = ({ filterHandler }) => {
         <h1>Filters</h1>
       </div>
       <div className="filters">
-        <div className="browser">
-          <h3>Browser</h3>
-          <SearchBar setTitleFilterHandler={setTitleFilterHandler} />
-        </div>
+        <SearchBar setTitleFilterHandler={setTitleFilterHandler} />
         <RangeBar
           setPagesFilterHandler={setPagesFilterHandler}
           pagesFilter={pagesFilter}

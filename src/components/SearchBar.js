@@ -12,6 +12,7 @@ const SearchBar = ({ setTitleFilterHandler }) => {
 
   return (
     <div className="box__filter">
+      <h2>Browser</h2>
       <input
         type="search"
         name="input__search-title"

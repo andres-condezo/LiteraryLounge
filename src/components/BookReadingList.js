@@ -26,15 +26,18 @@ const BookReadingList = () => {
       {isOpened && (
         <aside className="aside__readinglist">
           <div className="aside__readinglist-box" onDragOver={draggingOver}>
-            {readingList
-              && readingList.map((book) => (
+            {readingList.length > 0 || !readingList ? (
+              readingList.map((book) => (
                 <BookCard
                   key={book.id}
                   book={book}
                   availableBook={false}
                   sortReadingList={sortReadingList}
                 />
-              ))}
+              ))
+            ) : (
+              <div className="empty">No books in reading list</div>
+            )}
           </div>
         </aside>
       )}

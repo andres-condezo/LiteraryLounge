@@ -47,15 +47,18 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
           availableBook={availableBook}
           sortReadingList={sortReadingList}
         />
-        <BiSolidBookmark
-          type="button"
-          id={id}
-          aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-          className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
-          onClick={(e) => (onReadList
-            ? handleRemoveBook(e.target.parentNode.id)
-            : handleAddBook(e.target.parentNode.id))}
-        />
+        <div className="btn-tip">
+          <BiSolidBookmark
+            type="button"
+            id={id}
+            aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
+            className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
+            onClick={(e) => (onReadList
+              ? handleRemoveBook(e.target.parentNode.id)
+              : handleAddBook(e.target.parentNode.id))}
+          />
+          <span>{onReadList ? 'Remove book' : 'Add book'}</span>
+        </div>
       </article>
       <BookModal
         book={book}
