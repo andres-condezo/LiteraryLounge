@@ -450,21 +450,36 @@ summary {
   cursor: pointer;
 }
 
-summary::before {
+summary::after {
   content: ">";
   font-size: 1.6rem;
   position: absolute;
-  top: 0.6rem;
+  top: 0.65rem;
   left: 12rem;
   scale: 1.5 1;
   transform: rotate(90deg);
   transform-origin: 0.5rem 50%;
   transition: 0.25s transform ease;
+  border-radius: 50%;
 }
 
-details[open] > summary::before {
+summary:hover::before {
+  content: "";
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0.4rem;
+  left: 11.1rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+}
+
+details[open] > summary::after {
   transform: rotate(270deg);
   top: 0.5rem;
+  left: 11.8rem;
 }
 
 details summary::-webkit-details-marker {
