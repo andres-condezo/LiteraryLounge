@@ -5,9 +5,9 @@ const SearchBar = ({ setTitleFilterHandler }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const onChangeSearchBar = (e) => {
-    const titleValue = e.target.value.trim().toLowerCase();
+    const titleValue = e.target.value.toLowerCase();
     setSearchValue(titleValue);
-    setTitleFilterHandler(titleValue);
+    setTitleFilterHandler(titleValue.trim());
   };
 
   return (
