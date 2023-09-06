@@ -1,8 +1,8 @@
 import { PropTypes } from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import BookListHeader from './bookListHeder';
-import BookListCard from './bookListCard';
+import BookListHeader from './bookListHeader';
+import BookCard from './bookCard';
 import { getFilteredBooks } from '../logic/getFilters';
 
 const BookList = ({ filters }) => {
@@ -10,7 +10,9 @@ const BookList = ({ filters }) => {
   const bookList = useSelector((state) => state.books);
 
   useEffect(() => {
-    setFilteredBookList(getFilteredBooks(filters.title, filters.genre, filters.pages));
+    setFilteredBookList(
+      getFilteredBooks(filters.title, filters.genre, filters.pages),
+    );
   }, [bookList, filters]);
 
   const draggingOver = (e) => {
@@ -19,17 +21,12 @@ const BookList = ({ filters }) => {
 
   return (
     <section className="book-list">
-      <BookListHeader />
+      <BookListHeader filteredBookList={filteredBookList} />
       <div className="books-container" onDragOver={draggingOver}>
-        {
-          filteredBookList && filteredBookList.map((book) => (
-            <BookListCard
-              key={book.id}
-              book={book}
-              availableBook
-            />
-          ))
-        }
+        {filteredBookList
+          && filteredBookList.map((book) => (
+            <BookCard key={book.id} book={book} availableBook />
+          ))}
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import FilterAside from './FilterAside';
-import BookList from './booksList';
+import BookList from './bookList';
 import BookReadingList from './BookReadingList';
 
 const Main = () => {

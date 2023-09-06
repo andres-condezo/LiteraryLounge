@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import BookListCard from './bookListCard';
+import BookCard from './bookCard';
 import { getReadingBooks } from '../logic/getFilters';
 import '../css/reading-list.css';
 
 const BookReadingList = () => {
   const [readingList, setReadingList] = useState([]);
   const bookList = useSelector((state) => state.books);
+  const isOpened = useSelector((state) => state.listAside.isOpened);
 
   useEffect(() => {
     setReadingList(getReadingBooks());
@@ -21,21 +22,26 @@ const BookReadingList = () => {
   };
 
   return (
-    <aside className="aside__readinglist">
-      <h3>READING LIST</h3>
-      <div className="aside__readinglist-box" onDragOver={draggingOver}>
-        {
-          readingList && readingList.map((book) => (
-            <BookListCard
-              key={book.id}
-              book={book}
-              availableBook={false}
-              sortReadingList={sortReadingList}
-            />
-          ))
-        }
-      </div>
-    </aside>
+    <>
+      {isOpened && (
+        <aside className="aside__readinglist">
+          <div className="aside__readinglist-box" onDragOver={draggingOver}>
+            {readingList.length > 0 || !readingList ? (
+              readingList.map((book) => (
+                <BookCard
+                  key={book.id}
+                  book={book}
+                  availableBook={false}
+                  sortReadingList={sortReadingList}
+                />
+              ))
+            ) : (
+              <div className="empty">No books in reading list</div>
+            )}
+          </div>
+        </aside>
+      )}
+    </>
   );
 };
 
