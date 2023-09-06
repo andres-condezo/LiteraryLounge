@@ -223,7 +223,7 @@ main {
 }
 
 .counters p,
-.tip {
+.counters .tip {
   margin-left: 2rem;
   display: flex;
   align-items: center;
@@ -232,15 +232,15 @@ main {
   position: relative;
 }
 
-.tip:hover {
-  cursor: help;
-}
-
-.tip span {
+.counters .tip span {
   display: none;
 }
 
-.tip:hover span {
+.book-card .btn-tip span {
+  display: none;
+}
+
+.counters .tip:hover span {
   font-size: 1.2rem;
   width: auto;
   color: var(--prmary-color);
@@ -264,7 +264,7 @@ main {
   position: relative;
 }
 
-.btn-tip {
+.book-card .btn-tip {
   margin-left: 2rem;
   display: flex;
   align-items: center;
@@ -272,11 +272,11 @@ main {
   gap: 0.5rem;
 }
 
-.btn-tip span {
-  display: none;
+.counters .tip:hover {
+  cursor: help;
 }
 
-.btn-tip:hover span {
+.book-card .btn-tip:hover span {
   font-size: 1.2rem;
   width: auto;
   color: var(--prmary-color);

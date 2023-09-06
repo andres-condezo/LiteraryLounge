@@ -49,12 +49,12 @@
 }
 
 .close-btn-icon:hover {
-  background-color: var(--primary-color); 
+  background-color: var(--primary-color);
   border-radius: 50%;
 }
 
 .close-btn-icon:active {
-  background-color: var(--accent-color); 
+  background-color: var(--accent-color);
 }
 
 .close-btn-icon:hover path {
