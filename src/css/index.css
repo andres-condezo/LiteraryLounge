@@ -18,8 +18,33 @@ html {
   font-size: 10px;
 }
 
-body {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  all: unset;
+  font-weight: 600;
+}
+
+.section-header {
   font-size: 2rem;
+  padding: 3rem 0 2rem 0;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed var(--grey-color);
+}
+
+.btn {
+  all: unset;
+  cursor: pointer;
+}
+
+body {
+  font-size: 1.4rem;
   min-height: 100vh;
   overflow-x: hidden;
   color: var(--primary-color);
@@ -42,67 +67,84 @@ body {
 
 header {
   width: 100%;
-  height: 8rem;
-  padding: 1rem 5%;
+  height: 6rem;
+  padding: 1.8rem 4%;
   background-color: var(--accent-color);
-  position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+  font-size: 1.8rem;
 }
 
-.btn {
-  all: unset;
-  cursor: pointer;
+.list-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.1s ease;
+}
+
+.list-btn:hover {
+  font-weight: 500;
+}
+
+header span b {
+  font-weight: 800;
 }
 
 main {
   width: 100%;
-  min-height: calc(100vh - 11rem);
-  padding: 4rem 5%;
-  margin-top: 8rem;
+  min-height: calc(100vh - 12rem);
+  padding: 0 0 0 4%;
   background-color: var(--white-color);
   display: flex;
   flex-direction: row;
 }
 
 .aside__filter {
-  padding-top: 2rem;
-  padding-right: 2rem;
+  min-width: 18rem;
+  max-width: 18rem;
+  padding-right: 3rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
   border-right: 1px dashed var(--primary-color);
 }
 
-.browser h3 {
+.aside__filter .filters .box__filter {
+  width: 100%;
   margin-bottom: 1rem;
 }
 
-.browser input {
-  /* all: unset; */
-  width: 100%;
-  padding: 1rem;
-  font-size: 14px;
-  color: var(--primary-color);
-  background-color: var(--white-color);
-  border-radius: 8px;
+.aside__filter h2 {
+  height: 3rem;
+  margin-bottom: 0.5rem;
+  background-color: var(--bg-color);
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
 }
 
-.browser input::-webkit-clear-button {
+.box__filter input {
+  width: 100%;
+  padding: 0.5rem 0.8rem;
+  color: var(--primary-color);
+  background-color: var(--white-color);
+  border-radius: 5px;
+  border: 1px solid var(--primary-color);
+}
+
+.box__filter input::-webkit-clear-button {
   display: inline-block;
   background-color: red;
   color: white;
   font-weight: bold;
-  font-size: 12px;
   line-height: 1;
   border: none;
   border-radius: 50%;
-  width: 16px;
-  height: 16px;
+  width: 1.2rem;
+  height: 1.2rem;
   text-align: center;
   cursor: pointer;
 }
@@ -110,24 +152,13 @@ main {
 .aside__filter .filters {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-}
-
-.aside__filter .filters .box__filter h5 {
-  width: 100%;
-  height: 4rem;
-  margin-bottom: 1rem;
-  background-color: var(--bg-color);
-  padding: 0 2rem;
-  display: flex;
-  align-items: center;
+  gap: 1rem;
 }
 
 .aside__filter .filters .box__filter ul {
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color);
-  font-size: 1.8rem;
   font-weight: 400;
 }
 
@@ -136,12 +167,12 @@ main {
   border-bottom: 2px solid var(--white-color);
   list-style: none;
   cursor: pointer;
-  padding: 0 2rem;
+  padding: 0 1rem;
 }
 
 .select-btn {
   all: unset;
-  padding: 1rem;
+  padding: 0.5rem;
   width: 100%;
   height: 100%;
   transition: all 0.3s ease;
@@ -156,34 +187,24 @@ main {
 }
 
 .book-list {
-  padding: 0 1rem;
+  height: calc(100vh - 12rem);
+  padding: 0 4% 3rem 3rem;
   width: 100%;
-  font-size: 2rem;
+  overflow-y: auto;
 }
 
-.book-list .book-list-header {
-  padding: 2rem 2rem 4rem 2rem;
-  margin-bottom: 4rem;
+.book-list-header {
   border-bottom: 1px dashed var(--grey-color);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .book-list-header .title {
-  font-size: 2.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.book-list-header .title h1 {
-  font-size: 3.4rem;
 }
 
 .book-list-header .title span {
   margin: 0 1rem;
-  font-size: 2.8rem;
   font-weight: 300;
   color: var(--grey-color);
   display: flex;
@@ -197,42 +218,78 @@ main {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-weight: 300;
 }
 
 .counters p,
-.counters div.tip {
-  margin-right: 2rem;
+.counters .tip {
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.counters .tip span {
+  display: none;
+}
+
+.book-card .btn-tip span {
+  display: none;
+}
+
+.counters .tip:hover span {
+  font-size: 1.2rem;
+  width: auto;
+  color: var(--prmary-color);
+  background-color: var(--white-color);
+  padding: 0.5rem 1.5rem;
+  font-weight: 400;
+  text-align: center;
+  border: 1px dashed var(--primary-color);
+  border-radius: 37px 37px 37px 37px;
+  z-index: 100;
+  top: 3rem;
+  left: -5rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.pos-relative {
+  position: relative;
+}
+
+.book-card .btn-tip {
+  margin-left: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
 }
 
-.counters div.tip:hover {
+.counters .tip:hover {
   cursor: help;
-  position: relative;
 }
 
-.counters div.tip span {
-  display: none;
-}
-
-.counters div.tip:hover span {
+.book-card .btn-tip:hover span {
+  font-size: 1.2rem;
   width: auto;
   color: var(--prmary-color);
   background-color: var(--white-color);
   padding: 0.5rem 1.5rem;
-  font-size: 1.6rem;
   font-weight: 400;
   text-align: center;
   border: 1px dashed var(--primary-color);
   border-radius: 37px 37px 37px 37px;
   z-index: 100;
-  left: -5rem;
+  top: 2rem;
+  left: 3rem;
   position: absolute;
-  top: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -243,24 +300,18 @@ main {
   width: 100%;
   display: grid;
   gap: 4rem;
-  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
   justify-items: center;
   justify-content: start;
   align-content: start;
 }
 
 .book-card {
-  min-height: 24rem;
-  max-width: 30rem;
-  padding: 2rem;
+  min-height: 10rem;
+  max-width: 20rem;
+  padding: 1.2rem 1.8rem;
   text-align: center;
   border-radius: 1rem;
-  flex: 1 1 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   transition: all 0.3s ease;
   border: 1px dashed silver;
   -webkit-box-shadow: 14px 17px 9px -11px rgba(0, 0, 0, 0.48);
@@ -271,22 +322,21 @@ main {
 
 .btn-modal {
   all: unset;
+  height: 100%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  align-items: center;
   transition: all 0.3s ease;
 }
 
 .btn-modal picture {
-  width: 100%;
   transition: transform 0.3s ease;
 }
 
 .btn-modal img {
-  width: 18rem;
+  width: 12rem;
   height: 100%;
-  margin: 0 auto;
   aspect-ratio: 2/3;
   border-radius: 1rem;
   display: block;
@@ -298,30 +348,33 @@ main {
 }
 
 .book-list .card-info {
-  max-width: 20rem;
+  min-width: 12rem;
+  max-width: 12rem;
   height: 30%;
-  margin-bottom: 1rem;
+  margin-top: 1.6rem;
+  font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
 .card-info p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 .btn-icon {
-  font-size: 6rem;
   position: absolute;
   top: -4px;
   right: 0;
+  font-size: 4.2rem;
+  filter: drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4));
 }
 
 .btn-icon path {
   cursor: pointer;
-  stroke-width: 1;
+  stroke-width: 0.6;
   stroke: var(--primary-color);
   fill: var(--white-color);
   opacity: 50%;
@@ -333,7 +386,9 @@ main {
 }
 
 .btn-icon path:hover {
+  opacity: 1;
   fill: var(--accent-color);
+  stroke: var(--accent-color);
 }
 
 .btn-icon path:active,
@@ -344,39 +399,28 @@ main {
 .card-footer {
   width: 100%;
   display: flex;
+  text-align: center;
   align-items: center;
-  justify-content: space-between;
-  font-size: 1.4rem;
+  justify-content: center;
 }
 
 .btn-modal--reserved {
   opacity: 0.5;
 }
 
-.reading-list {
-  width: 15%;
-  background-color: var(--accent-color);
-  display: none;
-}
-
 footer {
   color: var(--white-color);
   background-color: var(--primary-color);
   text-align: center;
-  font-size: 1.4rem;
   width: 100%;
   height: 3rem;
-  padding: 4rem 5% 8rem 5%;
+  padding: 2rem 4% 4rem 4%;
   display: flex;
   justify-content: space-between;
   gap: 1rem;
 }
 
-footer .logo {
-  font-size: 1.8rem;
-}
-
-.list-btn {
+.list-btn-animation {
   animation: colorChange 0.5s ease;
 }
 
@@ -393,4 +437,51 @@ footer .logo {
   100% {
     transform: scale(1);
   }
+}
+
+details {
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+summary {
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+summary::after {
+  content: ">";
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0.65rem;
+  left: 12rem;
+  scale: 1.5 1;
+  transform: rotate(90deg);
+  transform-origin: 0.5rem 50%;
+  transition: 0.25s transform ease;
+  border-radius: 50%;
+}
+
+summary:hover::before {
+  content: "";
+  width: 2.6rem;
+  height: 2.6rem;
+  font-size: 1.6rem;
+  position: absolute;
+  top: 0.4rem;
+  left: 11.1rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  opacity: 0.5;
+}
+
+details[open] > summary::after {
+  transform: rotate(270deg);
+  top: 0.5rem;
+  left: 11.8rem;
+}
+
+details summary::-webkit-details-marker {
+  display: none;
 }

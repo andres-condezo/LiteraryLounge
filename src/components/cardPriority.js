@@ -30,12 +30,16 @@ const CardPriority = ({ id, availableBook, sortReadingList }) => {
   };
 
   return (
-    <div className={`card-priority ${availableBook ? '' : 'priority--display'}`}>
+    <div
+      className={`card-priority ${availableBook ? '' : 'priority--display'}`}
+    >
       {starList.map((index) => (
         <BiSolidStar
           key={index}
           data-item={id}
-          className={`${index <= priority ? 'priority--fill' : 'priority--empty'}`}
+          className={`${
+            index <= priority ? 'priority--fill' : 'priority--empty'
+          }`}
           onClick={(e) => onClickPriorityLevel(e, index)}
         />
       ))}

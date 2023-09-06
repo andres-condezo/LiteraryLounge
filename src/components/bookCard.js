@@ -7,7 +7,7 @@ import BookModal from './bookModal';
 
 const BookCard = ({ book, availableBook, sortReadingList }) => {
   const {
-    id, cover, title, author, pages, genre, onReadList,
+    id, cover, title, author, onReadList,
   } = book;
   const [modalState, setModalState] = useState(false);
   const { handleAddBook, handleRemoveBook } = useBook(onReadList);
@@ -41,28 +41,24 @@ const BookCard = ({ book, availableBook, sortReadingList }) => {
             <h4>{title}</h4>
             <p>{author.name}</p>
           </div>
-          <div className="card-footer">
-            <p>{genre}</p>
-            <div>
-              <span>Pag:&nbsp;</span>
-              <span>{pages}</span>
-            </div>
-          </div>
         </button>
         <CardPriority
           id={id}
           availableBook={availableBook}
           sortReadingList={sortReadingList}
         />
-        <BiSolidBookmark
-          type="button"
-          id={id}
-          aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
-          className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
-          onClick={(e) => (onReadList
-            ? handleRemoveBook(e.target.parentNode.id)
-            : handleAddBook(e.target.parentNode.id))}
-        />
+        <div className="btn-tip">
+          <BiSolidBookmark
+            type="button"
+            id={id}
+            aria-label={`${onReadList ? 'Remove' : 'Add'} book`}
+            className={`btn-icon ${onReadList ? 'btn-icon--reserved' : ''}`}
+            onClick={(e) => (onReadList
+              ? handleRemoveBook(e.target.parentNode.id)
+              : handleAddBook(e.target.parentNode.id))}
+          />
+          <span>{onReadList ? 'Remove book' : 'Add book'}</span>
+        </div>
       </article>
       <BookModal
         book={book}
@@ -85,8 +81,6 @@ BookCard.propTypes = {
     author: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
-    pages: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
     onReadList: PropTypes.bool.isRequired,
   }).isRequired,
   availableBook: PropTypes.bool.isRequired,

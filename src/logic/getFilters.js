@@ -21,11 +21,17 @@ const getFilteredBooks = (title, genre, pages) => {
 
     if (title !== '' && existRange) {
       return (
-        book.title.toLowerCase().includes(title) && book.pages >= pages[0] && book.pages <= pages[1]
+        book.title.toLowerCase().includes(title)
+        && book.pages >= pages[0]
+        && book.pages <= pages[1]
       );
     }
 
-    if (genre !== '' && existRange) return book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1];
+    if (genre !== '' && existRange) {
+      return (
+        book.genre === genre && book.pages >= pages[0] && book.pages <= pages[1]
+      );
+    }
 
     if (title !== '') return book.title.toLowerCase().includes(title);
 

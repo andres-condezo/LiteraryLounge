@@ -5,13 +5,14 @@ const SearchBar = ({ setTitleFilterHandler }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const onChangeSearchBar = (e) => {
-    const titleValue = e.target.value.trim().toLowerCase();
+    const titleValue = e.target.value.toLowerCase();
     setSearchValue(titleValue);
-    setTitleFilterHandler(titleValue);
+    setTitleFilterHandler(titleValue.trim());
   };
 
   return (
     <div className="box__filter">
+      <h2>Browser</h2>
       <input
         type="search"
         name="input__search-title"

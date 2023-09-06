@@ -5,7 +5,13 @@ import { loadState, saveState } from '../logic/localStorage';
 import { setAnimated, resetAnimated } from '../redux/listBtnSlice';
 
 const AddRemoveBookBtn = ({
-  as, id, onReadList, type, src, alt, availableBook,
+  as,
+  id,
+  onReadList,
+  type,
+  src,
+  alt,
+  availableBook,
 }) => {
   const Component = as || 'button';
   let btnClass = '';
@@ -13,7 +19,9 @@ const AddRemoveBookBtn = ({
   const isTypeButton = as === 'button';
 
   if (isTypeButton) {
-    btnClass = `btn add-btn ${onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'}`;
+    btnClass = `btn add-btn ${
+      onReadList ? 'add-btn--reserved' : 'add-btn--not-reserved'
+    }`;
     ariaLabel = `${onReadList ? 'Remove' : 'Add'} book`;
   }
 

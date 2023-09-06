@@ -29,7 +29,7 @@ const RangeBar = ({ setPagesFilterHandler }) => {
 
   return (
     <div className="box__filter">
-      <h5>PAGE RANGE</h5>
+      <h2>Page range</h2>
       <div className="box__range-slider">
         <div className="range__field">
           <input

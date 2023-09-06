@@ -1,5 +1,6 @@
 import ReactDom from 'react-dom';
 import PropTypes from 'prop-types';
+import { GrFormClose } from 'react-icons/gr';
 import '../css/modal.css';
 
 const Modal = ({ children, modalState, setModalState }) => {
@@ -18,7 +19,11 @@ const Modal = ({ children, modalState, setModalState }) => {
             setModalState(!modalState);
           }}
         >
-          <div className="modal__container" aria-hidden="true" onClick={handleModalcontainerClick}>
+          <div
+            className="modal__container"
+            aria-hidden="true"
+            onClick={handleModalcontainerClick}
+          >
             <div className="modal__header">
               <button
                 className="modal__close-btn"
@@ -27,12 +32,10 @@ const Modal = ({ children, modalState, setModalState }) => {
                   setModalState(!modalState);
                 }}
               >
-                X
+                <GrFormClose className="close-btn-icon" />
               </button>
             </div>
-            <div className="modal__main">
-              {children}
-            </div>
+            <div className="modal__main">{children}</div>
           </div>
         </div>
       )}
