@@ -3,10 +3,14 @@ import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import BookListHeader from './bookListHeader';
 import BookCard from './bookCard';
+import Paginator from './Paginator';
 import { getFilteredBooks } from '../logic/getFilters';
 
 const BookList = ({ filters }) => {
+  const maxPageItems = 10;
   const [filteredBookList, setFilteredBookList] = useState([]);
+  const [activePage, setActivePage] = useState(1);
+  const [rangeCount, setRangeCount] = useState([0, maxPageItems]);
   const bookList = useSelector((state) => state.books);
 
   useEffect(() => {
@@ -19,15 +23,32 @@ const BookList = ({ filters }) => {
     e.preventDefault();
   };
 
+  const paginatorHandler = (newActivePage) => {
+    const page = parseInt(newActivePage, 10);
+    const range = [maxPageItems * (page - 1), maxPageItems * page];
+    setRangeCount(range);
+    setActivePage(page);
+  };
+
   return (
     <section className="book-list">
       <BookListHeader filteredBookList={filteredBookList} />
       <div className="books-container" onDragOver={draggingOver}>
         {filteredBookList
-          && filteredBookList.map((book) => (
+          && filteredBookList.slice(rangeCount[0], rangeCount[1]).map((book) => (
             <BookCard key={book.id} book={book} availableBook />
           ))}
       </div>
+      {
+        filteredBookList
+        && filteredBookList.length > maxPageItems && (
+          <Paginator
+            numPages={Math.ceil(filteredBookList.length / maxPageItems)}
+            activePage={activePage}
+            paginatorHandler={paginatorHandler}
+          />
+        )
+      }
     </section>
   );
 };
