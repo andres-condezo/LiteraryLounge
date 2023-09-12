@@ -7,7 +7,7 @@ import Paginator from './Paginator';
 import { getFilteredBooks } from '../logic/getFilters';
 
 const BookList = ({ filters }) => {
-  const maxPageItems = 10;
+  const maxPageItems = 5;
   const [filteredBookList, setFilteredBookList] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [rangeCount, setRangeCount] = useState([0, maxPageItems]);

@@ -29,6 +29,7 @@ h6 {
 }
 
 .section-header {
+  width: 100%;
   font-size: 2rem;
   padding: 3rem 0 2rem 0;
   margin-bottom: 2rem;
@@ -188,22 +189,22 @@ main {
 
 .book-list {
   height: calc(100vh - 12rem);
-  padding: 0 4% 3rem 3rem;
   width: 100%;
+  padding: 0 4% 3rem 3rem;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.book-list-header {
-  border-bottom: 1px dashed var(--grey-color);
-}
-
-.book-list-header .title {
+.section-header .title {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.book-list-header .title span {
+.section-header .title span {
   margin: 0 1rem;
   font-weight: 300;
   color: var(--grey-color);
@@ -213,7 +214,7 @@ main {
   gap: 0.5rem;
 }
 
-.book-list-header .counters {
+.section-header .counters {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -298,6 +299,7 @@ main {
 
 .book-list .books-container {
   width: 100%;
+  height: 100%;
   display: grid;
   gap: 4rem;
   grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -307,7 +309,6 @@ main {
 }
 
 .book-card {
-  min-height: 10rem;
   max-width: 20rem;
   padding: 1.2rem 1.8rem;
   text-align: center;

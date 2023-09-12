@@ -13,7 +13,7 @@ const BookListHeader = ({ filteredBookList }) => {
   const readingList = loadState();
 
   return (
-    <div className="section-header book-list-header">
+    <div className="section-header">
       <div className="title">
         <h1>Books</h1>
         <span>

@@ -8,21 +8,35 @@ const Paginator = ({ numPages, activePage, paginatorHandler }) => {
 
   return (
     <div className="books__pagination">
-      <button type="button" data-page="1" className="btn__page" onClick={onClickPageButton}>&lt;</button>
-      {
-        [...Array(numPages).keys()].map((n) => (
-          <button
-            key={n + 1}
-            type="button"
-            data-page={n + 1}
-            className={`btn__page ${(n + 1) === activePage ? 'btn__page-active' : ''}`}
-            onClick={onClickPageButton}
-          >
-            {n + 1}
-          </button>
-        ))
-      }
-      <button type="button" data-page={numPages} className="btn__page" onClick={onClickPageButton}>&gt;</button>
+      <button
+        type="button"
+        data-page="1"
+        className="btn__page"
+        onClick={onClickPageButton}
+      >
+        &lt;
+      </button>
+      {[...Array(numPages).keys()].map((n) => (
+        <button
+          key={n + 1}
+          type="button"
+          data-page={n + 1}
+          className={`btn__page ${
+            n + 1 === activePage ? 'btn__page-active' : ''
+          }`}
+          onClick={onClickPageButton}
+        >
+          {n + 1}
+        </button>
+      ))}
+      <button
+        type="button"
+        data-page={numPages}
+        className="btn__page"
+        onClick={onClickPageButton}
+      >
+        &gt;
+      </button>
     </div>
   );
 };

@@ -1,0 +1,25 @@
+.books__pagination {
+  margin-top: 4rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.btn__page {
+  all: unset;
+  cursor: pointer;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.btn__page:hover {
+  color: var(--accent-color);
+}
+
+.btn__page:active {
+  color: var(--primary-color);
+}
+
+.btn__page-active {
+  color: var(--accent-color);
+}
